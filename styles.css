@@ -38,7 +38,7 @@ body::before {
   content: "";
   opacity: 0.12;
   mix-blend-mode: screen;
-  background-image: url("./paper-texture.webp");
+  background-image: url("./paper-texture-clean.webp");
   background-size: 430px 430px;
 }
 
