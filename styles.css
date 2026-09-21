@@ -286,12 +286,23 @@ h1 span {
   line-height: 1.8;
 }
 
-.studio h2,
+.studio h2 {
+  max-width: 10ch;
+  font-size: clamp(3rem, 4.4vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: 0.015em;
+}
+
 .contact h2 {
   max-width: 10ch;
   font-size: clamp(3rem, 6vw, 5.8rem);
   line-height: 0.98;
   letter-spacing: 0.025em;
+}
+
+.studio__inner {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(3rem, 7vw, 7rem);
 }
 
 .principles {
@@ -358,6 +369,50 @@ h1 span {
 .button-link:focus-visible {
   color: var(--black);
   background: var(--ivory);
+}
+
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.store-link {
+  display: inline-flex;
+  min-width: 180px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line-strong);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.store-link:hover,
+.store-link:focus-visible {
+  color: var(--black);
+  background: var(--ivory);
+}
+
+.game-gallery {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(1rem, 3vw, 3rem);
+}
+
+.game-gallery img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  object-fit: cover;
 }
 
 .site-footer__inner {
@@ -448,6 +503,10 @@ h1 span {
   .principles div {
     grid-template-columns: 1fr;
     gap: 0.45rem;
+  }
+
+  .game-gallery {
+    grid-template-columns: 1fr;
   }
 
   .site-footer__inner {
