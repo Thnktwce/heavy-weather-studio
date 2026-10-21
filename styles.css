@@ -7,3 +7,35 @@
 @media(max-width:850px){.hero-main,.project-body,.practice-grid,.contact-grid{grid-template-columns:1fr}.hero{min-height:0}.hero-main{padding:100px 0 80px;gap:55px}.hero h1{max-width:700px}.hero-aside p{max-width:500px}.hero-bottom{flex-wrap:wrap}.hero-bottom span:last-child{margin-left:0}.project-body{gap:45px}.project-detail>p{margin-bottom:45px}.case-study{grid-template-columns:1fr}.case-study>div,.case-study>div+div{padding:25px 0;border-left:0;border-bottom:1px solid var(--line)}.case-study p{max-width:600px;margin-top:12px}.contact-grid,.practice-grid{gap:65px}}
 @media(max-width:540px){.header-inner{min-height:72px;align-items:flex-start;flex-direction:column;justify-content:center;gap:8px;padding-block:12px}.site-header nav{width:100%;justify-content:space-between}.hero-topline span:last-child{display:none}.hero-main{padding:90px 0 80px}.hero h1{font-size:clamp(50px,12vw,70px)}.hero-bottom{gap:10px 20px}.hero-bottom span:last-child{width:100%}.section-block{padding:78px 0}.section-head{display:block;margin-bottom:37px}.section-head h2{margin-bottom:18px}.section-head>p:last-child{max-width:420px}.project{padding:24px}.project-body{padding:75px 0 45px}.project h3{font-size:clamp(80px,23vw,130px)}.secondary h3{font-size:clamp(75px,18vw,100px)}.facts div{grid-template-columns:95px 1fr}.footer-inner{align-items:flex-start;flex-direction:column;padding-block:25px;gap:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* POLYUS v0.9: working web tokens, pending final color and logo sign-off. */
+:root{--ink:#1a1a1a;--panel:#252524;--ivory:#e9e3d9;--muted:#b1a79a;--line:rgba(233,227,217,.28);--red:#8b2d2d}
+body{background:var(--ink)}
+.site-header{background:#1a1a1a}
+.header-actions{display:flex;align-items:center;gap:clamp(22px,3.5vw,55px)}
+.site-name{font-weight:900;letter-spacing:-.075em;gap:10px}
+.site-name img{display:block;flex:none}
+.language-switch{display:flex;align-items:center;gap:7px;border-left:1px solid var(--line);padding-left:24px;font:12px/1 var(--mono);color:var(--muted)}
+.language-switch button{border:0;background:none;color:var(--muted);font:inherit;cursor:pointer;padding:8px 2px;transition:color .2s}
+.language-switch button[aria-pressed="true"]{color:var(--ivory);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:6px;text-decoration-thickness:2px}
+.language-switch button:hover{color:var(--ivory)}
+.language-switch button:disabled{cursor:default;opacity:.55}
+.hero{max-width:none;min-height:clamp(680px,calc(100svh - 84px),920px);isolation:isolate;background:linear-gradient(90deg,rgba(19,19,19,.79) 0%,rgba(19,19,19,.69) 49%,rgba(19,19,19,.3) 100%),linear-gradient(0deg,#1a1a1a 0%,transparent 53%),url('./polyus-landscape.png') center 62%/cover no-repeat}
+.hero-topline{padding-top:31px}
+.hero-main{align-items:end;padding:135px 0 86px}
+.hero h1{font-weight:800;font-size:clamp(49px,6.25vw,96px);line-height:.96;letter-spacing:-.068em;text-transform:uppercase;max-width:950px;text-wrap:balance}
+.hero h1 span,.hero h1 em,.practice h2 span,.contact h2 span,.contact h2 em{display:block}
+.hero h1 em{color:#d4c7b8}
+.hero-aside p{text-shadow:0 1px 16px rgba(0,0,0,.45)}
+.hero-bottom{border-color:rgba(233,227,217,.45)}
+.project{border:1px solid rgba(233,227,217,.08)}
+.project-index span:last-child:before{background:var(--red)}
+.featured{background:#252524}
+.secondary{background:#2c2b29}
+.practice{background:#e9e3d9}
+.practice .lead{font-weight:600}
+.method-list{border-color:#a79b8b}
+.method-list li{border-color:#a79b8b}
+.contact{background:linear-gradient(110deg,#1a1a1a,#252524)}
+@media(max-width:850px){.header-actions{gap:20px}.site-header nav{gap:18px}.hero{background-position:center 60%}.hero-main{padding:100px 0 85px}.hero h1{max-width:730px}.hero-aside{max-width:510px}}
+@media(max-width:620px){.header-inner{min-height:110px;align-items:flex-start;flex-direction:column;justify-content:center;gap:9px;padding-block:12px}.header-actions{width:100%;justify-content:space-between;gap:10px}.site-header nav{gap:clamp(12px,3vw,22px)}.language-switch{padding-left:12px}.site-name img{width:25px;height:25px}.hero{min-height:690px;background-position:61% center}.hero-main{padding:90px 0 65px;gap:46px}.hero h1{font-size:clamp(43px,10.5vw,70px)}.hero-aside p{font-size:18px;margin-bottom:28px}.hero-topline{padding-top:23px}.hero-bottom{font-size:10px}}
