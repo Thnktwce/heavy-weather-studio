@@ -5,7 +5,7 @@
   let saved;
   try { saved = localStorage.getItem('polyus-language'); } catch (_) { /* Storage may be unavailable. */ }
 
-  fetch('./content.json?v=polyus-2')
+  fetch(`./content.json?updated=${Date.now()}`, { cache: 'no-store' })
     .then(response => {
       if (!response.ok) throw new Error(`Content ${response.status}`);
       return response.json();
