@@ -4,7 +4,7 @@
   "paper": "#E9E3D9",
   "muted": "#B1A79A",
   "accent": "#8B2D2D",
-  "heroImage": "/heavy-weather-studio/media/hero.webp",
+  "heroImage": "/media/hero.webp",
   "heroPosition": "center 62%",
   "heroShade": 0.7,
   "headlineScale": "standard",

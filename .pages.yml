@@ -1,7 +1,7 @@
 # POLYUS content and design editor for https://app.pagescms.org/
 media:
   input: media
-  output: /heavy-weather-studio/media
+  output: /media
   rename: safe
   categories:
   - image
