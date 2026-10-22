@@ -39,3 +39,20 @@ body{background:var(--ink)}
 .contact{background:linear-gradient(110deg,#1a1a1a,#252524)}
 @media(max-width:850px){.header-actions{gap:20px}.site-header nav{gap:18px}.hero{background-position:center 60%}.hero-main{padding:100px 0 85px}.hero h1{max-width:730px}.hero-aside{max-width:510px}}
 @media(max-width:620px){.header-inner{min-height:110px;align-items:flex-start;flex-direction:column;justify-content:center;gap:9px;padding-block:12px}.header-actions{width:100%;justify-content:space-between;gap:10px}.site-header nav{gap:clamp(12px,3vw,22px)}.language-switch{padding-left:12px}.site-name img{width:25px;height:25px}.hero{min-height:690px;background-position:61% center}.hero-main{padding:90px 0 65px;gap:46px}.hero h1{font-size:clamp(43px,10.5vw,70px)}.hero-aside p{font-size:18px;margin-bottom:28px}.hero-topline{padding-top:23px}.hero-bottom{font-size:10px}}
+
+/* Design values are editable in design.json through Pages CMS. */
+.site-header{background:var(--ink)}
+.hero{--hero-image:url('./media/hero.webp');--hero-position:center 62%;--hero-shade:.7;background:linear-gradient(90deg,rgba(19,19,19,var(--hero-shade)) 0%,rgba(19,19,19,.68) 49%,rgba(19,19,19,.3) 100%),linear-gradient(0deg,var(--ink) 0%,transparent 53%),var(--hero-image) var(--hero-position)/cover no-repeat}
+.hero h1 em{color:var(--ivory);opacity:.84}
+.featured{background:var(--panel)}
+.secondary{background:var(--panel);border-left:3px solid var(--red)}
+.practice{background:var(--ivory)}
+.practice .eyebrow,.method-list li>span{color:var(--ink);opacity:.7}
+.method-list,.method-list li{border-color:var(--muted)}
+.method-list p{color:var(--ink);opacity:.8}
+.contact{background:linear-gradient(110deg,var(--ink),var(--panel))}
+.project-media{margin:0 0 36px;border-top:1px solid var(--line);padding-top:28px}
+.project-media img{display:block;width:100%;height:auto;max-height:650px;object-fit:contain;background:var(--ink)}
+body[data-headline-scale="compact"] .hero h1{font-size:clamp(44px,5.5vw,84px)}
+body[data-headline-scale="large"] .hero h1{font-size:clamp(54px,7.1vw,106px)}
+@media(max-width:620px){.hero{background-position:var(--hero-position)}body[data-headline-scale="compact"] .hero h1{font-size:clamp(39px,9vw,64px)}body[data-headline-scale="large"] .hero h1{font-size:clamp(47px,11.3vw,76px)}}
