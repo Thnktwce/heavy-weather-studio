@@ -66,7 +66,7 @@ body[data-headline-scale="large"] .hero h1{font-size:clamp(54px,7.1vw,106px)}
 .video-trigger:hover img{opacity:.85}
 .video-play-icon,.video-play-label{position:relative;z-index:1;display:block}
 .video-play-icon{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 18px;padding-left:4px;border:1px solid var(--ivory);border-radius:50%;background:rgba(0,0,0,.5);font:26px var(--sans)}
-.video-pending{display:flex;min-height:230px;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:radial-gradient(circle at 50% 45%,#302d2b,#161616 75%);color:var(--muted);text-align:center}
+.video-pending{display:flex;aspect-ratio:auto;min-height:230px;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:radial-gradient(circle at 50% 45%,#302d2b,#161616 75%);color:var(--muted);text-align:center}
 .video-pending-mark{display:grid;place-items:center;width:64px;height:64px;padding-left:4px;border:1px solid var(--line);border-radius:50%;font-size:20px}
 .video-pending figcaption{padding:0 20px;font:12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .project-stores{margin:0 0 38px;border-top:1px solid var(--line);padding-top:24px}
