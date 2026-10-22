@@ -31,6 +31,9 @@ content:
     - name: navProjects
       label: 'Меню: проекты'
       type: string
+    - name: navCreative
+      label: 'Меню: креативы'
+      type: string
     - name: navPractice
       label: 'Меню: подход'
       type: string
@@ -66,6 +69,33 @@ content:
       type: text
     - name: projectNote
       label: Примечание после проектов
+      type: text
+    - name: creativeTitleA
+      label: 'Creative Development: строка 1'
+      type: string
+    - name: creativeTitleB
+      label: 'Creative Development: строка 2'
+      type: string
+    - name: creativeIntro
+      label: 'Креативы: описание'
+      type: text
+    - name: creativeLead
+      label: 'Креативы: главный тезис'
+      type: text
+    - name: creativeOne
+      label: 'Навык 1: название'
+      type: string
+    - name: creativeOneText
+      label: 'Навык 1: описание'
+      type: text
+    - name: creativeTwo
+      label: 'Навык 2: название'
+      type: string
+    - name: creativeTwoText
+      label: 'Навык 2: описание'
+      type: text
+    - name: creativeEmpty
+      label: Текст до публикации роликов
       type: text
     - name: practiceTitleA
       label: 'Подход: строка 1'
@@ -131,6 +161,9 @@ content:
     - name: navProjects
       label: 'Меню: проекты'
       type: string
+    - name: navCreative
+      label: 'Меню: креативы'
+      type: string
     - name: navPractice
       label: 'Меню: подход'
       type: string
@@ -166,6 +199,33 @@ content:
       type: text
     - name: projectNote
       label: Примечание после проектов
+      type: text
+    - name: creativeTitleA
+      label: 'Creative Development: строка 1'
+      type: string
+    - name: creativeTitleB
+      label: 'Creative Development: строка 2'
+      type: string
+    - name: creativeIntro
+      label: 'Креативы: описание'
+      type: text
+    - name: creativeLead
+      label: 'Креативы: главный тезис'
+      type: text
+    - name: creativeOne
+      label: 'Навык 1: название'
+      type: string
+    - name: creativeOneText
+      label: 'Навык 1: описание'
+      type: text
+    - name: creativeTwo
+      label: 'Навык 2: название'
+      type: string
+    - name: creativeTwoText
+      label: 'Навык 2: описание'
+      type: text
+    - name: creativeEmpty
+      label: Текст до публикации роликов
       type: text
     - name: practiceTitleA
       label: 'Подход: строка 1'
@@ -350,6 +410,69 @@ content:
       - name: text
         label: Описание
         type: text
+- name: creatives
+  label: Рекламные креативы · только разрешённые к публикации
+  type: file
+  path: creatives.json
+  format: json
+  list: true
+  fields:
+  - name: slug
+    label: ID для ссылки
+    type: string
+    required: true
+    pattern: ^[a-z0-9-]+$
+  - name: name
+    label: Название работы
+    type: string
+    required: true
+  - name: published
+    label: Показывать на сайте
+    type: boolean
+  - name: videoUrl
+    label: Ссылка на ролик YouTube / Vimeo / MP4
+    type: string
+    required: true
+  - name: image
+    label: Кадр для обложки (необязательно)
+    type: image
+  - name: aspect
+    label: Формат видео
+    type: select
+    options:
+      values:
+      - name: portrait
+        label: Вертикальный 9:16
+      - name: landscape
+        label: Горизонтальный 16:9
+      - name: square
+        label: Квадратный 1:1
+  - name: ru
+    label: Русский
+    type: object
+    fields:
+    - name: role
+      label: Роль / тип работы
+      type: string
+    - name: description
+      label: Задача и идея
+      type: text
+    - name: contribution
+      label: Что сделал лично
+      type: text
+  - name: en
+    label: English
+    type: object
+    fields:
+    - name: role
+      label: Role / type
+      type: string
+    - name: description
+      label: Brief and idea
+      type: text
+    - name: contribution
+      label: My contribution
+      type: text
 - name: design
   label: Оформление и ссылки
   type: file

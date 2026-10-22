@@ -2,6 +2,8 @@
   const buttons = [...document.querySelectorAll('.language-switch button')];
   const contentNodes = [...document.querySelectorAll('[data-i18n]')];
   const projectList = document.querySelector('#project-list');
+  const creativeList = document.querySelector('#creative-list');
+  const creativeEmpty = document.querySelector('#creative-empty');
   const requested = new URLSearchParams(location.search).get('lang');
   let saved;
   try { saved = localStorage.getItem('polyus-language'); } catch (_) { /* Optional storage. */ }
@@ -58,12 +60,12 @@
     } catch (_) { /* Ignore unsupported or malformed URLs. */ }
     return null;
   };
-  const mediaLabels = () => language === 'ru'
-    ? { play: 'Смотреть геймплей', pending: 'Геймплейное видео готовится', stores: 'Играть / страницы игры' }
-    : { play: 'Watch gameplay', pending: 'Gameplay video in preparation', stores: 'Play / game pages' };
-  function renderVideo(project) {
+  const mediaLabels = kind => language === 'ru'
+    ? { play: kind === 'creative' ? 'Смотреть ролик' : 'Смотреть геймплей', pending: 'Геймплейное видео готовится', stores: 'Играть / страницы игры' }
+    : { play: kind === 'creative' ? 'Watch video' : 'Watch gameplay', pending: 'Gameplay video in preparation', stores: 'Play / game pages' };
+  function renderVideo(project, kind = 'game') {
     const source = videoSource(project.videoUrl);
-    const labels = mediaLabels();
+    const labels = mediaLabels(kind);
     const figure = node('figure', `project-video${source ? '' : ' video-pending'}`);
     if (!source) {
       figure.append(node('span', 'video-pending-mark', '▶'), node('figcaption', '', labels.pending));
@@ -184,6 +186,32 @@
     });
     projectList.replaceChildren(fragment);
   }
+  function renderCreatives(creatives) {
+    const fragment = document.createDocumentFragment();
+    if (Array.isArray(creatives)) {
+      creatives.filter(item => item && item.published === true && item.name && item[language] && videoSource(item.videoUrl)).forEach((item, index) => {
+        const copy = item[language];
+        const article = node('article', 'creative-card');
+        if (/^[a-z0-9-]+$/.test(item.slug || '')) article.id = `creative-${item.slug}`;
+        article.dataset.aspect = ['portrait', 'landscape', 'square'].includes(item.aspect) ? item.aspect : 'portrait';
+        const media = node('div', 'creative-card-media');
+        media.append(renderVideo(item, 'creative'));
+        const details = node('div', 'creative-card-details');
+        details.append(node('p', 'eyebrow', `${String(index + 1).padStart(2, '0')} / ${copy.role || 'CREATIVE'}`));
+        details.append(node('h3', '', item.name));
+        if (copy.description) details.append(node('p', 'creative-description', copy.description));
+        if (copy.contribution) {
+          const work = node('div', 'creative-contribution');
+          work.append(node('span', 'eyebrow', language === 'ru' ? 'МОЯ РАБОТА' : 'MY WORK'), node('p', '', copy.contribution));
+          details.append(work);
+        }
+        article.append(media, details);
+        fragment.append(article);
+      });
+    }
+    creativeList.replaceChildren(fragment);
+    creativeEmpty.hidden = creativeList.childElementCount > 0;
+  }
 
   function applyDesign(design) {
     if (!design || typeof design !== 'object') return;
@@ -211,9 +239,10 @@
     }
   }
 
-  Promise.allSettled([load('content'), load('projects'), load('design')]).then(([copyResult, projectsResult, designResult]) => {
+  Promise.allSettled([load('content'), load('projects'), load('creatives'), load('design')]).then(([copyResult, projectsResult, creativesResult, designResult]) => {
     const content = copyResult.status === 'fulfilled' ? copyResult.value : null;
     const projects = projectsResult.status === 'fulfilled' ? projectsResult.value : null;
+    const creatives = creativesResult.status === 'fulfilled' ? creativesResult.value : null;
     if (designResult.status === 'fulfilled') applyDesign(designResult.value);
     function setLanguage(lang, updateUrl = false) {
       if (!content?.[lang]) return;
@@ -230,6 +259,7 @@
       document.querySelector('.site-header nav').setAttribute('aria-label', lang === 'ru' ? 'Основная навигация' : 'Main navigation');
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
       renderProjects(projects);
+      renderCreatives(creatives);
       try { localStorage.setItem('polyus-language', lang); } catch (_) { /* Language still works. */ }
       if (updateUrl) {
         const url = new URL(location.href);
@@ -247,6 +277,7 @@
       console.warn('POLYUS content unavailable; showing Russian HTML fallback.');
       language = 'ru';
       renderProjects(projects);
+      renderCreatives(creatives);
     }
   });
 })();
