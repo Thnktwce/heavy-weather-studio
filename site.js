@@ -26,6 +26,85 @@
       return url.href;
     } catch (_) { return null; }
   };
+  const safeLink = value => {
+    if (typeof value !== 'string') return null;
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' ? url.href : null;
+    } catch (_) { return null; }
+  };
+  const videoSource = value => {
+    if (typeof value !== 'string' || !value.trim()) return null;
+    try {
+      const url = new URL(value, location.href);
+      if (url.origin === location.origin && /\.(?:mp4|webm)$/i.test(url.pathname)) {
+        return { type: 'file', url: url.href };
+      }
+      if (url.protocol !== 'https:') return null;
+      const host = url.hostname.toLowerCase();
+      let id = null;
+      if (['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'].includes(host)) {
+        if (url.pathname === '/watch') id = url.searchParams.get('v');
+        else id = url.pathname.match(/^\/(?:embed|shorts|live)\/([\w-]{11})\/?$/)?.[1];
+        if (/^[\w-]{11}$/.test(id || '')) return { type: 'embed', url: `https://www.youtube-nocookie.com/embed/${id}` };
+      }
+      if (host === 'youtu.be' && /^\/[\w-]{11}\/?$/.test(url.pathname)) {
+        return { type: 'embed', url: `https://www.youtube-nocookie.com/embed/${url.pathname.split('/')[1]}` };
+      }
+      if (['vimeo.com', 'www.vimeo.com', 'player.vimeo.com'].includes(host)) {
+        id = url.pathname.match(/^\/(?:video\/)?(\d+)\/?$/)?.[1];
+        if (id) return { type: 'embed', url: `https://player.vimeo.com/video/${id}` };
+      }
+    } catch (_) { /* Ignore unsupported or malformed URLs. */ }
+    return null;
+  };
+  const mediaLabels = () => language === 'ru'
+    ? { play: 'Смотреть геймплей', pending: 'Геймплейное видео готовится', stores: 'Играть / страницы игры' }
+    : { play: 'Watch gameplay', pending: 'Gameplay video in preparation', stores: 'Play / game pages' };
+  function renderVideo(project) {
+    const source = videoSource(project.videoUrl);
+    const labels = mediaLabels();
+    const figure = node('figure', `project-video${source ? '' : ' video-pending'}`);
+    if (!source) {
+      figure.append(node('span', 'video-pending-mark', '▶'), node('figcaption', '', labels.pending));
+      return figure;
+    }
+    const button = node('button', 'video-trigger');
+    button.type = 'button';
+    button.setAttribute('aria-label', `${labels.play}: ${project.name}`);
+    const poster = safeImage(project.image);
+    if (poster) {
+      const image = node('img');
+      image.src = poster;
+      image.alt = '';
+      image.loading = 'lazy';
+      button.append(image);
+    }
+    button.append(node('span', 'video-play-icon', '▶'), node('span', 'video-play-label', labels.play));
+    button.addEventListener('click', () => {
+      if (source.type === 'file') {
+        const video = node('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        if (poster) video.poster = poster;
+        video.src = source.url;
+        figure.replaceChildren(video);
+        video.play().catch(() => { /* Controls stay available if autoplay is blocked. */ });
+      } else {
+        const frame = node('iframe');
+        frame.src = `${source.url}?autoplay=1`;
+        frame.title = `${labels.play}: ${project.name}`;
+        frame.loading = 'lazy';
+        frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+        frame.allowFullscreen = true;
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        figure.replaceChildren(frame);
+      }
+    });
+    figure.append(button);
+    return figure;
+  }
 
   function renderProjects(projects) {
     if (!Array.isArray(projects)) return;
@@ -60,6 +139,7 @@
       }
       body.append(detail);
       article.append(body);
+      article.append(renderVideo(project));
       const imageUrl = safeImage(project.image);
       if (imageUrl) {
         const figure = node('figure', 'project-media');
@@ -69,6 +149,27 @@
         image.loading = 'lazy';
         figure.append(image);
         article.append(figure);
+      }
+      if (Array.isArray(project.stores)) {
+        const links = project.stores.map(store => ({
+          label: typeof store?.platform === 'string' ? store.platform.trim() : '',
+          url: safeLink(store?.url)
+        })).filter(store => store.label && store.url);
+        if (links.length) {
+          const section = node('div', 'project-stores');
+          section.append(node('p', 'eyebrow', mediaLabels().stores));
+          const list = node('div', 'store-links');
+          links.forEach(store => {
+            const link = node('a', 'store-link', store.label);
+            link.href = store.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.append(node('span', 'store-arrow', '↗'));
+            list.append(link);
+          });
+          section.append(list);
+          article.append(section);
+        }
       }
       if (Array.isArray(copy.cases) && copy.cases.length) {
         const cases = node('div', 'case-study');

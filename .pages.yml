@@ -241,6 +241,27 @@ content:
   - name: image
     label: Игровой кадр (необязательно)
     type: image
+  - name: videoUrl
+    label: Геймплейное видео (обязательно для карточки)
+    type: string
+    required: true
+    description: Ссылка YouTube или Vimeo; также можно указать MP4/WebM с этого сайта. Для уже опубликованных карточек добавьте видео при ближайшем редактировании.
+  - name: stores
+    label: Где играть / страницы игры
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{platform}'
+    fields:
+    - name: platform
+      label: Площадка (itch.io, CrazyGames, Google Play, Steam)
+      type: string
+      required: true
+    - name: url
+      label: Ссылка на страницу игры (https://)
+      type: string
+      required: true
   - name: ru
     label: Русский
     type: object

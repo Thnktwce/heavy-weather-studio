@@ -56,3 +56,23 @@ body{background:var(--ink)}
 body[data-headline-scale="compact"] .hero h1{font-size:clamp(44px,5.5vw,84px)}
 body[data-headline-scale="large"] .hero h1{font-size:clamp(54px,7.1vw,106px)}
 @media(max-width:620px){.hero{background-position:var(--hero-position)}body[data-headline-scale="compact"] .hero h1{font-size:clamp(39px,9vw,64px)}body[data-headline-scale="large"] .hero h1{font-size:clamp(47px,11.3vw,76px)}}
+
+/* Gameplay is the primary visual in every project card. */
+.project-video{position:relative;overflow:hidden;margin:0 0 36px;aspect-ratio:16/9;background:#111;border:1px solid var(--line)}
+.project-video iframe,.project-video video,.video-trigger{display:block;width:100%;height:100%;border:0}
+.project-video video{background:#111}
+.video-trigger{position:absolute;inset:0;cursor:pointer;background:radial-gradient(circle at 50% 45%,#38322f,#111 75%);color:var(--ivory);font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.video-trigger img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;transition:opacity .2s}
+.video-trigger:hover img{opacity:.85}
+.video-play-icon,.video-play-label{position:relative;z-index:1;display:block}
+.video-play-icon{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 18px;padding-left:4px;border:1px solid var(--ivory);border-radius:50%;background:rgba(0,0,0,.5);font:26px var(--sans)}
+.video-pending{display:flex;min-height:230px;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:radial-gradient(circle at 50% 45%,#302d2b,#161616 75%);color:var(--muted);text-align:center}
+.video-pending-mark{display:grid;place-items:center;width:64px;height:64px;padding-left:4px;border:1px solid var(--line);border-radius:50%;font-size:20px}
+.video-pending figcaption{padding:0 20px;font:12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.project-stores{margin:0 0 38px;border-top:1px solid var(--line);padding-top:24px}
+.project-stores .eyebrow{margin-bottom:16px}
+.store-links{display:flex;flex-wrap:wrap;gap:10px}
+.store-link{display:inline-flex;min-height:44px;align-items:center;gap:24px;justify-content:space-between;padding:11px 16px;border:1px solid var(--line);font:12px/1.3 var(--mono);text-decoration:none;transition:background .2s,border-color .2s}
+.store-link:hover{background:var(--red);border-color:var(--red)}
+.store-arrow{font-size:17px}
+@media(max-width:620px){.project-video{margin-bottom:28px}.video-pending{min-height:180px}.video-play-icon{width:62px;height:62px}.store-link{flex:1 1 auto}}
