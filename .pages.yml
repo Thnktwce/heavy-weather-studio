@@ -1,0 +1,396 @@
+# POLYUS content and design editor for https://app.pagescms.org/
+media:
+  input: media
+  output: /heavy-weather-studio/media
+  rename: safe
+  categories:
+  - image
+content:
+- name: texts
+  label: Тексты сайта · RU / EN
+  type: file
+  path: content.json
+  format: json
+  fields:
+  - name: ru
+    label: Русский
+    type: object
+    fields:
+    - name: title
+      label: Заголовок вкладки
+      type: string
+    - name: description
+      label: Описание для поиска
+      type: text
+    - name: ogDescription
+      label: Описание для соцсетей
+      type: text
+    - name: skip
+      label: Ссылка пропуска
+      type: string
+    - name: navProjects
+      label: 'Меню: проекты'
+      type: string
+    - name: navPractice
+      label: 'Меню: подход'
+      type: string
+    - name: navContact
+      label: 'Меню: контакт'
+      type: string
+    - name: heroKicker
+      label: Надпись над главным заголовком
+      type: string
+    - name: heroIndex
+      label: Индекс в шапке
+      type: string
+    - name: heroTitleA
+      label: 'Заголовок: строка 1'
+      type: string
+    - name: heroTitleB
+      label: 'Заголовок: строка 2'
+      type: string
+    - name: heroTitleC
+      label: 'Заголовок: строка 3'
+      type: string
+    - name: heroIntro
+      label: Вступление
+      type: text
+    - name: viewProjects
+      label: Кнопка проектов
+      type: string
+    - name: projectsTitle
+      label: Название раздела проектов
+      type: string
+    - name: projectsIntro
+      label: Описание раздела проектов
+      type: text
+    - name: projectNote
+      label: Примечание после проектов
+      type: text
+    - name: practiceTitleA
+      label: 'Подход: строка 1'
+      type: string
+    - name: practiceTitleB
+      label: 'Подход: строка 2'
+      type: string
+    - name: practiceIntro
+      label: Вступление к подходу
+      type: text
+    - name: methodOne
+      label: 'Шаг 1: название'
+      type: string
+    - name: methodOneText
+      label: 'Шаг 1: описание'
+      type: text
+    - name: methodTwo
+      label: 'Шаг 2: название'
+      type: string
+    - name: methodTwoText
+      label: 'Шаг 2: описание'
+      type: text
+    - name: methodThree
+      label: 'Шаг 3: название'
+      type: string
+    - name: methodThreeText
+      label: 'Шаг 3: описание'
+      type: text
+    - name: contactTitleA
+      label: 'Контакт: строка 1'
+      type: string
+    - name: contactTitleB
+      label: 'Контакт: строка 2'
+      type: string
+    - name: contactTitleC
+      label: 'Контакт: строка 3'
+      type: string
+    - name: contactIntro
+      label: 'Контакт: описание'
+      type: text
+    - name: backToTop
+      label: Ссылка наверх
+      type: string
+    - name: footerNote
+      label: Нижняя подпись
+      type: string
+  - name: en
+    label: English
+    type: object
+    fields:
+    - name: title
+      label: Заголовок вкладки
+      type: string
+    - name: description
+      label: Описание для поиска
+      type: text
+    - name: ogDescription
+      label: Описание для соцсетей
+      type: text
+    - name: skip
+      label: Ссылка пропуска
+      type: string
+    - name: navProjects
+      label: 'Меню: проекты'
+      type: string
+    - name: navPractice
+      label: 'Меню: подход'
+      type: string
+    - name: navContact
+      label: 'Меню: контакт'
+      type: string
+    - name: heroKicker
+      label: Надпись над главным заголовком
+      type: string
+    - name: heroIndex
+      label: Индекс в шапке
+      type: string
+    - name: heroTitleA
+      label: 'Заголовок: строка 1'
+      type: string
+    - name: heroTitleB
+      label: 'Заголовок: строка 2'
+      type: string
+    - name: heroTitleC
+      label: 'Заголовок: строка 3'
+      type: string
+    - name: heroIntro
+      label: Вступление
+      type: text
+    - name: viewProjects
+      label: Кнопка проектов
+      type: string
+    - name: projectsTitle
+      label: Название раздела проектов
+      type: string
+    - name: projectsIntro
+      label: Описание раздела проектов
+      type: text
+    - name: projectNote
+      label: Примечание после проектов
+      type: text
+    - name: practiceTitleA
+      label: 'Подход: строка 1'
+      type: string
+    - name: practiceTitleB
+      label: 'Подход: строка 2'
+      type: string
+    - name: practiceIntro
+      label: Вступление к подходу
+      type: text
+    - name: methodOne
+      label: 'Шаг 1: название'
+      type: string
+    - name: methodOneText
+      label: 'Шаг 1: описание'
+      type: text
+    - name: methodTwo
+      label: 'Шаг 2: название'
+      type: string
+    - name: methodTwoText
+      label: 'Шаг 2: описание'
+      type: text
+    - name: methodThree
+      label: 'Шаг 3: название'
+      type: string
+    - name: methodThreeText
+      label: 'Шаг 3: описание'
+      type: text
+    - name: contactTitleA
+      label: 'Контакт: строка 1'
+      type: string
+    - name: contactTitleB
+      label: 'Контакт: строка 2'
+      type: string
+    - name: contactTitleC
+      label: 'Контакт: строка 3'
+      type: string
+    - name: contactIntro
+      label: 'Контакт: описание'
+      type: text
+    - name: backToTop
+      label: Ссылка наверх
+      type: string
+    - name: footerNote
+      label: Нижняя подпись
+      type: string
+- name: projects
+  label: Проекты · порядок сверху вниз
+  type: file
+  path: projects.json
+  format: json
+  list: true
+  fields:
+  - name: slug
+    label: ID для ссылки
+    type: string
+    required: true
+    pattern: ^[a-z0-9-]+$
+    description: Латинские буквы, цифры и дефис. После публикации лучше не менять.
+  - name: name
+    label: Название
+    type: string
+    required: true
+  - name: category
+    label: Короткая категория
+    type: string
+  - name: published
+    label: Показывать на сайте
+    type: boolean
+  - name: featured
+    label: Крупная карточка
+    type: boolean
+  - name: image
+    label: Игровой кадр (необязательно)
+    type: image
+  - name: ru
+    label: Русский
+    type: object
+    fields:
+    - name: status
+      label: Статус
+      type: string
+    - name: genre
+      label: Жанр
+      type: string
+    - name: subtitle
+      label: Подзаголовок
+      type: string
+    - name: description
+      label: Описание проекта
+      type: text
+    - name: facts
+      label: Факты
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: label
+        label: Подпись
+        type: string
+      - name: value
+        label: Значение
+        type: string
+    - name: cases
+      label: Задача / решение / проверка
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: label
+        label: Подпись
+        type: string
+      - name: text
+        label: Описание
+        type: text
+  - name: en
+    label: English
+    type: object
+    fields:
+    - name: status
+      label: Статус
+      type: string
+    - name: genre
+      label: Жанр
+      type: string
+    - name: subtitle
+      label: Подзаголовок
+      type: string
+    - name: description
+      label: Описание проекта
+      type: text
+    - name: facts
+      label: Факты
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: label
+        label: Подпись
+        type: string
+      - name: value
+        label: Значение
+        type: string
+    - name: cases
+      label: Задача / решение / проверка
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: label
+        label: Подпись
+        type: string
+      - name: text
+        label: Описание
+        type: text
+- name: design
+  label: Оформление и ссылки
+  type: file
+  path: design.json
+  format: json
+  fields:
+  - name: background
+    label: Тёмный фон
+    type: string
+    pattern:
+      regex: ^#[0-9a-fA-F]{6}$
+      message: 'Введите цвет в формате #RRGGBB'
+  - name: panel
+    label: Цвет карточек
+    type: string
+    pattern:
+      regex: ^#[0-9a-fA-F]{6}$
+      message: 'Введите цвет в формате #RRGGBB'
+  - name: paper
+    label: Светлая секция и текст
+    type: string
+    pattern:
+      regex: ^#[0-9a-fA-F]{6}$
+      message: 'Введите цвет в формате #RRGGBB'
+  - name: muted
+    label: Приглушённый текст
+    type: string
+    pattern:
+      regex: ^#[0-9a-fA-F]{6}$
+      message: 'Введите цвет в формате #RRGGBB'
+  - name: accent
+    label: Сигнальный акцент
+    type: string
+    pattern:
+      regex: ^#[0-9a-fA-F]{6}$
+      message: 'Введите цвет в формате #RRGGBB'
+  - name: heroImage
+    label: Фон первого экрана
+    type: image
+  - name: heroPosition
+    label: 'Позиция фона (например: center 62%)'
+    type: string
+  - name: heroShade
+    label: Затемнение фона, от 0 до 1
+    type: number
+    options:
+      min: 0
+      max: 1
+  - name: headlineScale
+    label: Размер большого заголовка
+    type: select
+    options:
+      values:
+      - name: compact
+        label: Компактный
+      - name: standard
+        label: Стандартный
+      - name: large
+        label: Крупный
+  - name: githubUrl
+    label: Ссылка GitHub
+    type: string
+  - name: threadsUrl
+    label: Ссылка Threads
+    type: string

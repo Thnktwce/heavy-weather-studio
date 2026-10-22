@@ -1,0 +1,13 @@
+{
+  "background": "#1A1A1A",
+  "panel": "#252524",
+  "paper": "#E9E3D9",
+  "muted": "#B1A79A",
+  "accent": "#8B2D2D",
+  "heroImage": "/heavy-weather-studio/media/hero.webp",
+  "heroPosition": "center 62%",
+  "heroShade": 0.7,
+  "headlineScale": "standard",
+  "githubUrl": "https://github.com/Thnktwce",
+  "threadsUrl": "https://www.threads.net/@polyushw_"
+}
