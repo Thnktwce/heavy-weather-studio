@@ -104,3 +104,19 @@ body[data-headline-scale="large"] .hero h1{font-size:clamp(54px,7.1vw,106px)}
 @media(max-width:850px){.creative-overview,.creative-card{grid-template-columns:1fr}.creative-capabilities{max-width:650px}.creative-card .project-video{max-width:540px}}
 @media(max-width:700px){.header-actions{flex-wrap:wrap;gap:0 12px}.site-header nav{flex-wrap:wrap;gap:0 14px}.site-header nav a{display:inline-flex;align-items:center;min-height:44px}.language-switch button{min-width:34px;min-height:44px}.creative .section-head h2{font-size:clamp(40px,9vw,62px)}}
 @media(max-width:420px){.header-actions{align-items:stretch}.site-header nav{width:100%;gap:0 5px}.site-header nav a{font-size:10px;letter-spacing:.02em}.language-switch{border-left:0;padding-left:0;margin-left:auto}.creative-capabilities{grid-template-columns:1fr;gap:28px}.creative-lead{font-size:27px}.creative .section-head h2{font-size:clamp(35px,10vw,42px)}}
+
+/* Optional deeper case study for shipped and tested projects. */
+.project-how-high h3{font-size:clamp(64px,9vw,132px);line-height:.9}
+.project-story{border-top:1px solid var(--line);padding-top:clamp(35px,5vw,70px)}
+.project-story h4{margin:0 0 17px}
+.project-story-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(25px,5vw,75px)}
+.project-story-intro p,.project-story-state p{max-width:650px;font-size:16px;line-height:1.65;color:var(--ivory);margin:0}
+.project-decisions{margin-top:clamp(45px,6vw,80px);border-top:1px solid var(--line);padding-top:28px}
+.project-decisions>h4{margin-bottom:30px}
+.project-decisions ol{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(25px,5vw,75px);list-style:none;margin:0;padding:0}
+.project-decisions li{border-top:1px solid var(--line);padding:23px 0 31px}
+.project-decisions h5{font-size:clamp(20px,2vw,28px);font-weight:500;line-height:1.2;margin:18px 0 12px}
+.project-decisions p{max-width:580px;font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+.project-story-state{margin-top:25px;padding:28px 0 0;border-top:1px solid var(--line)}
+@media(max-width:850px){.project-story-intro,.project-decisions ol{grid-template-columns:1fr}.project-story-intro{gap:32px}.project-how-high h3{font-size:clamp(64px,13vw,110px)}}
+@media(max-width:540px){.project-how-high h3{font-size:clamp(60px,17vw,90px)}}

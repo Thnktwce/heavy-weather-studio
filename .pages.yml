@@ -366,6 +366,29 @@ content:
       - name: text
         label: Описание
         type: text
+    - name: about
+      label: О проекте · подробное описание
+      type: text
+    - name: contribution
+      label: Мой вклад
+      type: text
+    - name: designDecisions
+      label: Ключевые дизайнерские решения
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: title
+        label: Название
+        type: string
+      - name: text
+        label: Обоснование
+        type: text
+    - name: currentState
+      label: Текущее состояние
+      type: text
   - name: en
     label: English
     type: object
@@ -410,6 +433,29 @@ content:
       - name: text
         label: Описание
         type: text
+    - name: about
+      label: About the game
+      type: text
+    - name: contribution
+      label: My contribution
+      type: text
+    - name: designDecisions
+      label: Key design decisions
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: title
+        label: Title
+        type: string
+      - name: text
+        label: Reasoning
+        type: text
+    - name: currentState
+      label: Current state
+      type: text
 - name: creatives
   label: Рекламные креативы · только разрешённые к публикации
   type: file

@@ -114,7 +114,10 @@
     projects.filter(project => project && project.published !== false && project[language] && project.name).forEach((project, index) => {
       const copy = project[language];
       const article = node('article', `project ${project.featured ? 'featured' : 'secondary'}`);
-      if (/^[a-z0-9-]+$/.test(project.slug || '')) article.id = project.slug;
+      if (/^[a-z0-9-]+$/.test(project.slug || '')) {
+        article.id = project.slug;
+        article.classList.add(`project-${project.slug}`);
+      }
       const headingId = `project-heading-${index}`;
       article.setAttribute('aria-labelledby', headingId);
       const top = node('div', 'project-index');
@@ -181,6 +184,40 @@
           cases.append(section);
         });
         article.append(cases);
+      }
+      if (copy.about || copy.contribution || copy.currentState || (Array.isArray(copy.designDecisions) && copy.designDecisions.length)) {
+        const story = node('div', 'project-story');
+        const intro = node('div', 'project-story-intro');
+        if (copy.about) {
+          const section = node('section');
+          section.append(node('h4', 'eyebrow', language === 'ru' ? 'О ПРОЕКТЕ' : 'ABOUT THE GAME'), node('p', '', copy.about));
+          intro.append(section);
+        }
+        if (copy.contribution) {
+          const section = node('section');
+          section.append(node('h4', 'eyebrow', language === 'ru' ? 'МОЙ ВКЛАД' : 'MY CONTRIBUTION'), node('p', '', copy.contribution));
+          intro.append(section);
+        }
+        if (intro.childElementCount) story.append(intro);
+        if (Array.isArray(copy.designDecisions) && copy.designDecisions.length) {
+          const decisions = node('section', 'project-decisions');
+          decisions.append(node('h4', 'eyebrow', language === 'ru' ? 'КЛЮЧЕВЫЕ РЕШЕНИЯ' : 'KEY DESIGN DECISIONS'));
+          const list = node('ol');
+          copy.designDecisions.forEach((decision, decisionIndex) => {
+            if (!decision?.title || !decision?.text) return;
+            const item = node('li');
+            item.append(node('span', 'case-number', String(decisionIndex + 1).padStart(2, '0')), node('h5', '', decision.title), node('p', '', decision.text));
+            list.append(item);
+          });
+          decisions.append(list);
+          story.append(decisions);
+        }
+        if (copy.currentState) {
+          const section = node('section', 'project-story-state');
+          section.append(node('h4', 'eyebrow', language === 'ru' ? 'ТЕКУЩЕЕ СОСТОЯНИЕ' : 'CURRENT STATE'), node('p', '', copy.currentState));
+          story.append(section);
+        }
+        article.append(story);
       }
       fragment.append(article);
     });

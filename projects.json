@@ -78,6 +78,108 @@
     }
   },
   {
+    "slug": "how-high",
+    "name": "How High",
+    "category": "PLATFORMER",
+    "featured": false,
+    "published": true,
+    "image": "",
+    "videoUrl": "",
+    "stores": [],
+    "ru": {
+      "status": "Закрытое тестирование · Google Play",
+      "genre": "Бесконечный вертикальный платформер · Android · Unity",
+      "subtitle": "Выше облаков. Выше собственного рекорда.",
+      "description": "Аркадный платформер в рисованном чёрно-белом мире. Поднимайся по облакам, избегай молний и собирай серии точных приземлений, чтобы взлететь на ракете и побить собственный рекорд.",
+      "facts": [
+        {
+          "label": "Разработчик",
+          "value": "Moon Rocks"
+        },
+        {
+          "label": "Моя роль",
+          "value": "Геймдизайн, разработка, подготовка к выпуску"
+        },
+        {
+          "label": "Визуал",
+          "value": "Дима"
+        },
+        {
+          "label": "Платформа",
+          "value": "Android · Google Play (закрытый тест)"
+        }
+      ],
+      "cases": [],
+      "about": "How High — мобильная игра о непрерывном подъёме над городом. Герой прыгает автоматически, а игрок направляет его наклоном телефона или касаниями экрана. По мере набора высоты обычные облака уступают место более сложным сочетаниям: платформы двигаются, рассыпаются и создают опасные зоны с молниями. Короткие забеги строятся вокруг точности движения и восстановления после ошибок. Приземление в центр облака усиливает следующий прыжок, три точных попадания подряд запускают ракету, а пойманное у нижнего края экрана облако может спасти почти проигранную попытку.",
+      "contribution": "Я отвечал за геймдизайн, разработку и интеграцию игровых систем, управление, генерацию уровня, баланс сложности, интерфейсное поведение, эффекты, звуковую и тактильную обратную связь, рекламную монетизацию и подготовку Android-сборки к Google Play. Визуал нарисовал Дима. В разработке я использовал AI-инструменты, сохраняя за собой постановку задач, дизайнерские решения, настройку и проверку результата.",
+      "designDecisions": [
+        {
+          "title": "Простое управление с возможностью совершенствоваться",
+          "text": "Автоматический прыжок позволяет сосредоточиться на горизонтальном движении. Система PERFECT добавляет точность: попадание в центр облака даёт более высокий прыжок, а серия из трёх попаданий — ракетное ускорение."
+        },
+        {
+          "title": "Сложность с переменным ритмом",
+          "text": "С высотой растут расстояния и доля опасных облаков. После ускорений и спасений интенсивность временно снижается, создавая передышку перед следующим сложным участком."
+        },
+        {
+          "title": "Выразительная обратная связь",
+          "text": "Приседание перед отскоком, деформация облака, короткое замедление времени, звук и вибрация подчёркивают приземление. PERFECT, ракета и спасение получают собственные акценты."
+        },
+        {
+          "title": "Личная цель внутри каждого забега",
+          "text": "Метка высоты предыдущей попытки остаётся в небе и превращает абстрактный счёт в видимый ориентир, до которого хочется добраться."
+        }
+      ],
+      "currentState": "Игра проходит закрытое тестирование в Google Play. Реализованы два режима управления, сохранение рекорда, процедурная генерация уровня, игровые усиления и рекламный второй шанс. Основной игровой процесс доступен без подключения к интернету."
+    },
+    "en": {
+      "status": "Closed testing · Google Play",
+      "genre": "Endless vertical platformer · Android · Unity",
+      "subtitle": "Above the clouds. Beyond your last record.",
+      "description": "An arcade platformer set in a hand-drawn black-and-white world. Climb from cloud to cloud, dodge lightning, and chain precise landings to launch a rocket and beat your own record.",
+      "facts": [
+        {
+          "label": "Developer",
+          "value": "Moon Rocks"
+        },
+        {
+          "label": "My role",
+          "value": "Game design, development, release preparation"
+        },
+        {
+          "label": "Art",
+          "value": "Dima"
+        },
+        {
+          "label": "Platform",
+          "value": "Android · Google Play (closed test)"
+        }
+      ],
+      "cases": [],
+      "about": "How High is a mobile game about climbing endlessly above a city. The character jumps automatically, while players steer by tilting the phone or touching the screen. As altitude increases, ordinary clouds give way to moving and crumbling platforms and hazardous areas with lightning. Short runs focus on precise movement and recovering from mistakes. Landing in the center of a cloud boosts the next jump; three precise landings in a row trigger a rocket. Catching a cloud near the bottom of the screen can save an almost-lost run.",
+      "contribution": "I handled game design, development and integration of the game systems, controls, level generation, difficulty balance, UI behavior, effects, audio and haptic feedback, ad monetization, and preparation of the Android build for Google Play. Dima created the art. I used AI tools during development while retaining responsibility for the briefs, design decisions, tuning, and validation of the results.",
+      "designDecisions": [
+        {
+          "title": "Simple controls with room to improve",
+          "text": "Automatic jumping lets players focus on horizontal movement. The PERFECT system rewards precision: a central landing gives a higher jump, and three in a row trigger a rocket boost."
+        },
+        {
+          "title": "Difficulty with a changing rhythm",
+          "text": "Distances and hazardous clouds increase with altitude. After boosts and recoveries, the intensity briefly drops, giving players a breather before the next demanding section."
+        },
+        {
+          "title": "Expressive feedback",
+          "text": "A crouch before takeoff, cloud deformation, brief slow motion, sound, and vibration emphasize each landing. PERFECT landings, rocket boosts, and saves each receive their own accents."
+        },
+        {
+          "title": "A personal goal in every run",
+          "text": "A marker for the previous run’s height stays in the sky, turning an abstract score into a visible target to reach."
+        }
+      ],
+      "currentState": "The game is in closed testing on Google Play. Two control modes, saved high scores, procedural level generation, power-ups, and an ad-based second chance are implemented. The core game can be played offline."
+    }
+  },
+  {
     "slug": "blood-rave",
     "name": "Blood Rave",
     "category": "ACTION",
