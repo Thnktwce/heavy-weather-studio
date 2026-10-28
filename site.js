@@ -415,6 +415,7 @@
       document.querySelector('meta[property="og:description"]').content = copy.ogDescription;
       document.querySelector('.site-name').setAttribute('aria-label', lang === 'ru' ? 'POLYUS — начало страницы' : 'POLYUS — top of page');
       document.querySelector('.site-header nav').setAttribute('aria-label', lang === 'ru' ? 'Основная навигация' : 'Main navigation');
+      projectExpanded.setAttribute('aria-label', lang === 'ru' ? 'Подробности проекта' : 'Project case study');
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
       renderProjects(projects);
       renderCreatives(creatives);
