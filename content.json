@@ -16,8 +16,8 @@
     "heroIntro": "Я проектирую механики, собираю их в Unity и проверяю на практике. Здесь показываю не только результат, но и решения, из которых он складывается.",
     "viewProjects": "Смотреть проекты",
     "projectsTitle": "Проекты",
-    "projectsIntro": "Работа в процессе. Статусы обновляются по факту, без обещанных дат.",
-    "projectNote": "Геймплейные видео и ссылки на площадки добавляются по мере готовности публичных материалов и страниц игр.",
+    "projectsIntro": "Три проекта — мобильная игра, головоломка и системный экшен. Откройте карточку, чтобы увидеть мой вклад и дизайнерские решения.",
+    "projectNote": "У каждого проекта есть прямая ссылка: открытым кейсом удобно поделиться отдельно.",
     "creativeTitleA": "Creative",
     "creativeTitleB": "Development",
     "creativeIntro": "Создаю рекламные игровые ролики: от идеи и сцены в Unity до монтажа и версий под разные форматы.",
@@ -41,7 +41,10 @@
     "contactTitleC": "разобрать?",
     "contactIntro": "Открыт к разговору о геймдизайне, игровых прототипах и совместной работе. Публичные заметки и ход разработки — в моих каналах.",
     "backToTop": "Наверх ↑",
-    "footerNote": "Сделано с вниманием к деталям."
+    "footerNote": "Сделано с вниманием к деталям.",
+    "caseStudyLabel": "ПОДРОБНЫЙ КЕЙС",
+    "closeCase": "Закрыть кейс ↑",
+    "backToProjects": "Ко всем проектам ↑"
   },
   "en": {
     "title": "POLYUS — game design and development",
@@ -60,8 +63,8 @@
     "heroIntro": "I design mechanics, build them in Unity, and test them in practice. Here I show the results and the decisions behind them.",
     "viewProjects": "Explore projects",
     "projectsTitle": "Projects",
-    "projectsIntro": "Work in progress. Statuses change when the work does, without promised dates.",
-    "projectNote": "Gameplay videos and store links are added as the public materials and game pages become ready.",
+    "projectsIntro": "Three projects: a mobile game, a puzzle, and a systems-driven action game. Open a card to explore my contribution and design decisions.",
+    "projectNote": "Each project has a direct link, so you can share a case study on its own.",
     "creativeTitleA": "Creative",
     "creativeTitleB": "Development",
     "creativeIntro": "I make game advertising videos, from the concept and Unity scene to editing and versions for different formats.",
@@ -85,6 +88,9 @@
     "contactTitleC": "apart?",
     "contactIntro": "I'm open to conversations about game design, prototypes, and collaboration. I share public notes and development progress through my channels.",
     "backToTop": "Back to top ↑",
-    "footerNote": "Made with attention to detail."
+    "footerNote": "Made with attention to detail.",
+    "caseStudyLabel": "FULL CASE STUDY",
+    "closeCase": "Close case study ↑",
+    "backToProjects": "Back to all projects ↑"
   }
 }

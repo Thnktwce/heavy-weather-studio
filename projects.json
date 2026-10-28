@@ -1,87 +1,9 @@
 [
   {
-    "slug": "puzzle",
-    "name": "4×4",
-    "category": "PUZZLE",
-    "featured": true,
-    "published": true,
-    "image": "",
-    "videoUrl": "",
-    "stores": [],
-    "ru": {
-      "status": "В разработке",
-      "genre": "Пространственная головоломка",
-      "subtitle": "Маленькое поле. Длинная цепочка последствий.",
-      "description": "Перемещать цветные фишки между комнатами просто. Сложнее провести нужную фишку через узкие проходы, не разрушив уже собранное решение.",
-      "facts": [
-        {
-          "label": "Моя работа",
-          "value": "Механики, прототипирование, уровни, UX"
-        },
-        {
-          "label": "Инструмент",
-          "value": "Unity"
-        },
-        {
-          "label": "Сейчас",
-          "value": "Прототип и проверка визуала"
-        }
-      ],
-      "cases": [
-        {
-          "label": "A / Задача",
-          "text": "Сделать понятную с первого взгляда систему, в которой трудность возникает из положения фишек и ограничений пространства."
-        },
-        {
-          "label": "B / Решение",
-          "text": "Отказался от процедурной сложности в пользу уровней, где каждый ход меняет возможности нескольких комнат. Десять исторических раскладок служат внутренним ориентиром для анализа."
-        },
-        {
-          "label": "C / Проверка",
-          "text": "Следующий этап — наблюдать новых игроков: понимают ли цель, где застревают и какие подсказки нужны. Публичная версия и собственная кампания ещё готовятся."
-        }
-      ]
-    },
-    "en": {
-      "status": "In development",
-      "genre": "Spatial puzzle",
-      "subtitle": "A small board. A long chain of consequences.",
-      "description": "Moving colored pieces between rooms is simple. Getting the right piece through narrow passages without undoing the rest of your solution is harder.",
-      "facts": [
-        {
-          "label": "My work",
-          "value": "Mechanics, prototyping, levels, UX"
-        },
-        {
-          "label": "Tool",
-          "value": "Unity"
-        },
-        {
-          "label": "Now",
-          "value": "Prototype and visual exploration"
-        }
-      ],
-      "cases": [
-        {
-          "label": "A / Challenge",
-          "text": "Build a system that reads at a glance, while the difficulty comes from piece positions and spatial constraints."
-        },
-        {
-          "label": "B / Decision",
-          "text": "I chose designed levels over procedural complexity. Each move changes the possibilities in several rooms. Ten earlier layouts remain an internal reference for analysis."
-        },
-        {
-          "label": "C / Next test",
-          "text": "Next I need to watch new players: do they understand the goal, where do they get stuck, and what hints do they need? The public version and a new set of original levels are still in progress."
-        }
-      ]
-    }
-  },
-  {
     "slug": "how-high",
     "name": "How High",
     "category": "PLATFORMER",
-    "featured": false,
+    "featured": true,
     "published": true,
     "image": "/media/HowHigh_PlayStore_feature_1024x500.png",
     "videoUrl": "",
@@ -131,7 +53,9 @@
         }
       ],
       "currentState": "Игра проходит закрытое тестирование в Google Play. Реализованы два режима управления, сохранение рекорда, процедурная генерация уровня, игровые усиления и рекламный второй шанс. Основной игровой процесс доступен без подключения к интернету.",
-      "imageAlt": "Обложка How High: герой взлетает над городом среди облаков"
+      "imageAlt": "Обложка How High: герой взлетает над городом среди облаков",
+      "cardRole": "Геймдизайн · разработка",
+      "cardPlatform": "Android · Unity"
     },
     "en": {
       "status": "Closed testing · Google Play",
@@ -178,7 +102,9 @@
         }
       ],
       "currentState": "The game is in closed testing on Google Play. Two control modes, saved high scores, procedural level generation, power-ups, and an ad-based second chance are implemented. The core game can be played offline.",
-      "imageAlt": "How High cover: the character rises above the city among clouds"
+      "imageAlt": "How High cover: the character rises above the city among clouds",
+      "cardRole": "Game design · development",
+      "cardPlatform": "Android · Unity"
     },
     "icon": "/media/HowHigh_PlayStore_icon_512.png",
     "screenshots": [
@@ -215,6 +141,88 @@
     ]
   },
   {
+    "slug": "puzzle",
+    "name": "4×4",
+    "category": "PUZZLE",
+    "featured": false,
+    "published": true,
+    "image": "",
+    "videoUrl": "",
+    "stores": [],
+    "ru": {
+      "status": "В разработке",
+      "genre": "Пространственная головоломка",
+      "subtitle": "Маленькое поле. Длинная цепочка последствий.",
+      "description": "Перемещать цветные фишки между комнатами просто. Сложнее провести нужную фишку через узкие проходы, не разрушив уже собранное решение.",
+      "facts": [
+        {
+          "label": "Моя работа",
+          "value": "Механики, прототипирование, уровни, UX"
+        },
+        {
+          "label": "Инструмент",
+          "value": "Unity"
+        },
+        {
+          "label": "Сейчас",
+          "value": "Прототип и проверка визуала"
+        }
+      ],
+      "cases": [
+        {
+          "label": "A / Задача",
+          "text": "Сделать понятную с первого взгляда систему, в которой трудность возникает из положения фишек и ограничений пространства."
+        },
+        {
+          "label": "B / Решение",
+          "text": "Отказался от процедурной сложности в пользу уровней, где каждый ход меняет возможности нескольких комнат. Десять исторических раскладок служат внутренним ориентиром для анализа."
+        },
+        {
+          "label": "C / Проверка",
+          "text": "Следующий этап — наблюдать новых игроков: понимают ли цель, где застревают и какие подсказки нужны. Публичная версия и собственная кампания ещё готовятся."
+        }
+      ],
+      "cardRole": "Механики · прототипирование · уровни",
+      "cardPlatform": "Unity"
+    },
+    "en": {
+      "status": "In development",
+      "genre": "Spatial puzzle",
+      "subtitle": "A small board. A long chain of consequences.",
+      "description": "Moving colored pieces between rooms is simple. Getting the right piece through narrow passages without undoing the rest of your solution is harder.",
+      "facts": [
+        {
+          "label": "My work",
+          "value": "Mechanics, prototyping, levels, UX"
+        },
+        {
+          "label": "Tool",
+          "value": "Unity"
+        },
+        {
+          "label": "Now",
+          "value": "Prototype and visual exploration"
+        }
+      ],
+      "cases": [
+        {
+          "label": "A / Challenge",
+          "text": "Build a system that reads at a glance, while the difficulty comes from piece positions and spatial constraints."
+        },
+        {
+          "label": "B / Decision",
+          "text": "I chose designed levels over procedural complexity. Each move changes the possibilities in several rooms. Ten earlier layouts remain an internal reference for analysis."
+        },
+        {
+          "label": "C / Next test",
+          "text": "Next I need to watch new players: do they understand the goal, where do they get stuck, and what hints do they need? The public version and a new set of original levels are still in progress."
+        }
+      ],
+      "cardRole": "Mechanics · prototyping · levels",
+      "cardPlatform": "Unity"
+    }
+  },
+  {
     "slug": "blood-rave",
     "name": "Blood Rave",
     "category": "ACTION",
@@ -238,7 +246,8 @@
           "value": "Разработка"
         }
       ],
-      "cases": []
+      "cases": [],
+      "cardRole": "Геймдизайн · игровые системы"
     },
     "en": {
       "status": "In development",
@@ -255,7 +264,8 @@
           "value": "Development"
         }
       ],
-      "cases": []
+      "cases": [],
+      "cardRole": "Game design · game systems"
     }
   }
 ]

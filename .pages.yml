@@ -70,6 +70,15 @@ content:
     - name: projectNote
       label: Примечание после проектов
       type: text
+    - name: caseStudyLabel
+      label: Надпись открытого кейса
+      type: string
+    - name: closeCase
+      label: Закрыть кейс
+      type: string
+    - name: backToProjects
+      label: Ко всем проектам
+      type: string
     - name: creativeTitleA
       label: 'Creative Development: строка 1'
       type: string
@@ -200,6 +209,15 @@ content:
     - name: projectNote
       label: Примечание после проектов
       type: text
+    - name: caseStudyLabel
+      label: Надпись открытого кейса
+      type: string
+    - name: closeCase
+      label: Закрыть кейс
+      type: string
+    - name: backToProjects
+      label: Ко всем проектам
+      type: string
     - name: creativeTitleA
       label: 'Creative Development: строка 1'
       type: string
@@ -353,6 +371,12 @@ content:
     - name: genre
       label: Жанр
       type: string
+    - name: cardRole
+      label: Роль в короткой карточке
+      type: string
+    - name: cardPlatform
+      label: Платформа / инструмент в карточке
+      type: string
     - name: subtitle
       label: Подзаголовок
       type: string
@@ -422,6 +446,12 @@ content:
       type: string
     - name: genre
       label: Жанр
+      type: string
+    - name: cardRole
+      label: Роль в короткой карточке
+      type: string
+    - name: cardPlatform
+      label: Платформа / инструмент в карточке
       type: string
     - name: subtitle
       label: Подзаголовок

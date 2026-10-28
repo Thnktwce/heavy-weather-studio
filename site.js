@@ -2,6 +2,8 @@
   const buttons = [...document.querySelectorAll('.language-switch button')];
   const contentNodes = [...document.querySelectorAll('[data-i18n]')];
   const projectList = document.querySelector('#project-list');
+  const projectExpanded = document.querySelector('#project-expanded');
+  const projectPanels = document.querySelector('#project-panels');
   const creativeList = document.querySelector('#creative-list');
   const creativeEmpty = document.querySelector('#creative-empty');
   const requested = new URLSearchParams(location.search).get('lang');
@@ -108,16 +110,95 @@
     return figure;
   }
 
+  function revealProject(slug, { scroll = false, focus = false } = {}) {
+    const panels = [...projectPanels.querySelectorAll('.project')];
+    const active = panels.find(panel => panel.id === slug);
+    projectExpanded.hidden = !active;
+    panels.forEach(panel => { panel.hidden = panel !== active; });
+    projectList.querySelectorAll('.project-card-link').forEach(link => {
+      const selected = link.dataset.project === slug && Boolean(active);
+      link.setAttribute('aria-expanded', String(selected));
+      if (selected) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    if (active && scroll) requestAnimationFrame(() => {
+      projectExpanded.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (focus) active.querySelector('h3')?.focus({ preventScroll: true });
+    });
+  }
+
+  function closeProject() {
+    const active = projectPanels.querySelector('.project:not([hidden])');
+    const link = active && [...projectList.querySelectorAll('.project-card-link')].find(item => item.dataset.project === active.id);
+    const url = new URL(location.href);
+    url.hash = 'projects';
+    history.pushState(null, '', url);
+    revealProject(null);
+    link?.focus({ preventScroll: true });
+    projectList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('[data-close-project]').forEach(button => button.addEventListener('click', closeProject));
+  const syncProjectHash = () => {
+    let slug = '';
+    try { slug = decodeURIComponent(location.hash.slice(1)); } catch (_) { /* Invalid hash. */ }
+    revealProject(slug, { scroll: [...projectPanels.querySelectorAll('.project')].some(panel => panel.id === slug) });
+  };
+  window.addEventListener('popstate', syncProjectHash);
+  window.addEventListener('hashchange', syncProjectHash);
+
   function renderProjects(projects) {
     if (!Array.isArray(projects)) return;
     const fragment = document.createDocumentFragment();
+    const panels = document.createDocumentFragment();
     projects.filter(project => project && project.published !== false && project[language] && project.name).forEach((project, index) => {
       const copy = project[language];
-      const article = node('article', `project ${project.featured ? 'featured' : 'secondary'}`);
-      if (/^[a-z0-9-]+$/.test(project.slug || '')) {
-        article.id = project.slug;
-        article.classList.add(`project-${project.slug}`);
+      const slug = /^[a-z0-9-]+$/.test(project.slug || '') ? project.slug : `project-${index}`;
+      const card = node('article', `project-card${project.featured ? ' card-featured' : ''}`);
+      const link = node('a', 'project-card-link');
+      link.href = `#${slug}`;
+      link.dataset.project = slug;
+      link.setAttribute('aria-controls', 'project-expanded');
+      link.setAttribute('aria-expanded', 'false');
+      const cardImage = safeImage(project.image);
+      const media = node('div', `project-card-media${cardImage ? '' : ' card-type-media'}`);
+      if (cardImage) {
+        const image = node('img');
+        image.src = cardImage;
+        image.alt = '';
+        image.loading = index === 0 ? 'eager' : 'lazy';
+        media.append(image);
+      } else {
+        media.append(node('span', 'card-art-mark', project.name));
+        media.setAttribute('aria-hidden', 'true');
       }
+      const cardCopy = node('div', 'project-card-copy');
+      const topLine = node('div', 'project-card-topline');
+      topLine.append(node('span', '', `${String(index + 1).padStart(2, '0')} / ${project.category || 'GAME'}`), node('span', '', copy.status || ''));
+      cardCopy.append(topLine);
+      const cardHeading = node('h3', '', project.name);
+      cardHeading.id = `card-heading-${index}`;
+      cardCopy.append(cardHeading);
+      cardCopy.append(node('p', 'project-card-description', copy.description || copy.subtitle || ''));
+      const meta = node('div', 'project-card-meta');
+      if (copy.cardRole) meta.append(node('span', '', copy.cardRole));
+      if (copy.cardPlatform) meta.append(node('span', '', copy.cardPlatform));
+      if (meta.childElementCount) cardCopy.append(meta);
+      cardCopy.append(node('span', 'project-card-cta', language === 'ru' ? 'Открыть кейс ↗' : 'View case study ↗'));
+      link.append(media, cardCopy);
+      link.addEventListener('click', event => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        const url = new URL(location.href);
+        url.hash = slug;
+        history.pushState(null, '', url);
+        revealProject(slug, { scroll: true, focus: true });
+      });
+      card.append(link);
+      card.setAttribute('aria-labelledby', cardHeading.id);
+      fragment.append(card);
+      const article = node('article', `project ${project.featured ? 'featured' : 'secondary'}`);
+      article.id = slug;
+      article.classList.add(`project-${slug}`);
       const headingId = `project-heading-${index}`;
       article.setAttribute('aria-labelledby', headingId);
       const top = node('div', 'project-index');
@@ -138,6 +219,7 @@
       }
       const h3 = node('h3', '', project.name);
       h3.id = headingId;
+      h3.tabIndex = -1;
       title.append(h3);
       if (copy.subtitle) title.append(node('p', 'project-subtitle', copy.subtitle));
       body.append(title);
@@ -254,9 +336,13 @@
         }
         article.append(story);
       }
-      fragment.append(article);
+      panels.append(article);
     });
     projectList.replaceChildren(fragment);
+    projectPanels.replaceChildren(panels);
+    let selected = '';
+    try { selected = decodeURIComponent(location.hash.slice(1)); } catch (_) { /* Invalid hash. */ }
+    revealProject(selected);
   }
   function renderCreatives(creatives) {
     const fragment = document.createDocumentFragment();
@@ -354,7 +440,10 @@
     if (location.hash.length > 1) {
       try {
         const targetId = decodeURIComponent(location.hash.slice(1));
-        requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView());
+        requestAnimationFrame(() => {
+          const target = document.getElementById(targetId);
+          (target?.closest('#project-expanded') || target)?.scrollIntoView();
+        });
       } catch (_) { /* Ignore malformed anchors. */ }
     }
   });
