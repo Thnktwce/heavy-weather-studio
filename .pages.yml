@@ -301,6 +301,27 @@ content:
   - name: image
     label: Игровой кадр (необязательно)
     type: image
+  - name: icon
+    label: Иконка игры (необязательно)
+    type: image
+  - name: screenshots
+    label: Галерея скриншотов
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{image}'
+    fields:
+    - name: image
+      label: Скриншот
+      type: image
+      required: true
+    - name: ruAlt
+      label: Описание изображения на русском
+      type: string
+    - name: enAlt
+      label: Image description in English
+      type: string
   - name: videoUrl
     label: Геймплейное видео (обязательно для карточки)
     type: string
@@ -338,6 +359,9 @@ content:
     - name: description
       label: Описание проекта
       type: text
+    - name: imageAlt
+      label: Описание обложки для доступности
+      type: string
     - name: facts
       label: Факты
       type: object
@@ -405,6 +429,9 @@ content:
     - name: description
       label: Описание проекта
       type: text
+    - name: imageAlt
+      label: Cover image description
+      type: string
     - name: facts
       label: Факты
       type: object

@@ -126,6 +126,16 @@
       const body = node('div', 'project-body');
       const title = node('div', 'project-title');
       title.append(node('p', 'eyebrow', copy.genre || ''));
+      const iconUrl = safeImage(project.icon);
+      if (iconUrl) {
+        const icon = node('img', 'project-app-icon');
+        icon.src = iconUrl;
+        icon.alt = '';
+        icon.width = 72;
+        icon.height = 72;
+        icon.loading = 'lazy';
+        title.append(icon);
+      }
       const h3 = node('h3', '', project.name);
       h3.id = headingId;
       title.append(h3);
@@ -144,16 +154,41 @@
       }
       body.append(detail);
       article.append(body);
-      article.append(renderVideo(project));
       const imageUrl = safeImage(project.image);
       if (imageUrl) {
         const figure = node('figure', 'project-media');
         const image = node('img');
         image.src = imageUrl;
-        image.alt = `${project.name} — ${copy.genre || ''}`;
+        image.alt = copy.imageAlt || `${project.name} — ${copy.genre || ''}`;
         image.loading = 'lazy';
         figure.append(image);
         article.append(figure);
+      }
+      article.append(renderVideo(project));
+      if (Array.isArray(project.screenshots) && project.screenshots.length) {
+        const section = node('section', 'project-gallery');
+        section.setAttribute('aria-label', language === 'ru' ? `Скриншоты игры ${project.name}` : `${project.name} screenshots`);
+        const label = node('p', 'eyebrow', language === 'ru' ? 'КАДРЫ ИЗ ИГРЫ / ПРОЛИСТАЙТЕ →' : 'IN-GAME STILLS / SCROLL →');
+        const track = node('div', 'project-gallery-track');
+        track.tabIndex = 0;
+        project.screenshots.forEach((shot, shotIndex) => {
+          const url = safeImage(shot?.image);
+          if (!url) return;
+          const figure = node('figure');
+          const image = node('img');
+          image.src = url;
+          image.alt = (language === 'ru' ? shot.ruAlt : shot.enAlt) || `${project.name} — ${shotIndex + 1}`;
+          image.loading = 'lazy';
+          image.decoding = 'async';
+          image.width = 1080;
+          image.height = 1920;
+          figure.append(image);
+          track.append(figure);
+        });
+        if (track.childElementCount) {
+          section.append(label, track);
+          article.append(section);
+        }
       }
       if (Array.isArray(project.stores)) {
         const links = project.stores.map(store => ({

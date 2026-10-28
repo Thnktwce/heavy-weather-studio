@@ -83,7 +83,7 @@
     "category": "PLATFORMER",
     "featured": false,
     "published": true,
-    "image": "",
+    "image": "/media/HowHigh_PlayStore_feature_1024x500.png",
     "videoUrl": "",
     "stores": [],
     "ru": {
@@ -130,7 +130,8 @@
           "text": "Метка высоты предыдущей попытки остаётся в небе и превращает абстрактный счёт в видимый ориентир, до которого хочется добраться."
         }
       ],
-      "currentState": "Игра проходит закрытое тестирование в Google Play. Реализованы два режима управления, сохранение рекорда, процедурная генерация уровня, игровые усиления и рекламный второй шанс. Основной игровой процесс доступен без подключения к интернету."
+      "currentState": "Игра проходит закрытое тестирование в Google Play. Реализованы два режима управления, сохранение рекорда, процедурная генерация уровня, игровые усиления и рекламный второй шанс. Основной игровой процесс доступен без подключения к интернету.",
+      "imageAlt": "Обложка How High: герой взлетает над городом среди облаков"
     },
     "en": {
       "status": "Closed testing · Google Play",
@@ -176,8 +177,42 @@
           "text": "A marker for the previous run’s height stays in the sky, turning an abstract score into a visible target to reach."
         }
       ],
-      "currentState": "The game is in closed testing on Google Play. Two control modes, saved high scores, procedural level generation, power-ups, and an ad-based second chance are implemented. The core game can be played offline."
-    }
+      "currentState": "The game is in closed testing on Google Play. Two control modes, saved high scores, procedural level generation, power-ups, and an ad-based second chance are implemented. The core game can be played offline.",
+      "imageAlt": "How High cover: the character rises above the city among clouds"
+    },
+    "icon": "/media/HowHigh_PlayStore_icon_512.png",
+    "screenshots": [
+      {
+        "image": "/media/HowHigh_screenshot_en_1.png",
+        "ruAlt": "Персонаж поднимается над городом по облакам",
+        "enAlt": "The character climbs above the city on clouds"
+      },
+      {
+        "image": "/media/HowHigh_screenshot_en_2.png",
+        "ruAlt": "Платформы и усиление среди облаков",
+        "enAlt": "Cloud platforms and a power-up"
+      },
+      {
+        "image": "/media/HowHigh_screenshot_en_3.png",
+        "ruAlt": "Ракетный подъём сквозь облака",
+        "enAlt": "Rocket boost through the clouds"
+      },
+      {
+        "image": "/media/HowHigh_screenshot_en_4.png",
+        "ruAlt": "Опасные грозовые облака и молнии",
+        "enAlt": "Hazardous storm clouds and lightning"
+      },
+      {
+        "image": "/media/HowHigh_screenshot_en_5.png",
+        "ruAlt": "Персонаж избегает грозового облака",
+        "enAlt": "The character avoids a storm cloud"
+      },
+      {
+        "image": "/media/HowHigh_screenshot_en_6.png",
+        "ruAlt": "Метка высоты прошлого забега и облака",
+        "enAlt": "The previous run height marker among the clouds"
+      }
+    ]
   },
   {
     "slug": "blood-rave",
