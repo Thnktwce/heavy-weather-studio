@@ -316,5 +316,11 @@
       renderProjects(projects);
       renderCreatives(creatives);
     }
+    if (location.hash.length > 1) {
+      try {
+        const targetId = decodeURIComponent(location.hash.slice(1));
+        requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView());
+      } catch (_) { /* Ignore malformed anchors. */ }
+    }
   });
 })();
