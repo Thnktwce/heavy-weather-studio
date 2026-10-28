@@ -55,7 +55,8 @@
       "currentState": "Игра проходит закрытое тестирование в Google Play. Реализованы два режима управления, сохранение рекорда, процедурная генерация уровня, игровые усиления и рекламный второй шанс. Основной игровой процесс доступен без подключения к интернету.",
       "imageAlt": "Обложка How High: герой взлетает над городом среди облаков",
       "cardRole": "Геймдизайн · разработка",
-      "cardPlatform": "Android · Unity"
+      "cardPlatform": "Android · Unity",
+      "cardSummary": "Вертикальный платформер: точные приземления, ракета и личный рекорд."
     },
     "en": {
       "status": "Closed testing · Google Play",
@@ -104,7 +105,8 @@
       "currentState": "The game is in closed testing on Google Play. Two control modes, saved high scores, procedural level generation, power-ups, and an ad-based second chance are implemented. The core game can be played offline.",
       "imageAlt": "How High cover: the character rises above the city among clouds",
       "cardRole": "Game design · development",
-      "cardPlatform": "Android · Unity"
+      "cardPlatform": "Android · Unity",
+      "cardSummary": "A vertical platformer about precise landings, rocket boosts, and beating your record."
     },
     "icon": "/media/HowHigh_PlayStore_icon_512.png",
     "screenshots": [
@@ -183,7 +185,8 @@
         }
       ],
       "cardRole": "Механики · прототипирование · уровни",
-      "cardPlatform": "Unity"
+      "cardPlatform": "Unity",
+      "cardSummary": "Пространственная головоломка, где каждый ход меняет путь через комнаты."
     },
     "en": {
       "status": "In development",
@@ -219,7 +222,8 @@
         }
       ],
       "cardRole": "Mechanics · prototyping · levels",
-      "cardPlatform": "Unity"
+      "cardPlatform": "Unity",
+      "cardSummary": "A spatial puzzle where every move reshapes your route through the rooms."
     }
   },
   {
@@ -247,7 +251,8 @@
         }
       ],
       "cases": [],
-      "cardRole": "Геймдизайн · игровые системы"
+      "cardRole": "Геймдизайн · игровые системы",
+      "cardSummary": "Системный экшен о выборе: рискнуть в толпе или вовремя выйти."
     },
     "en": {
       "status": "In development",
@@ -265,7 +270,8 @@
         }
       ],
       "cases": [],
-      "cardRole": "Game design · game systems"
+      "cardRole": "Game design · game systems",
+      "cardSummary": "A systems-driven action game about staying in the crowd or getting out in time."
     }
   }
 ]

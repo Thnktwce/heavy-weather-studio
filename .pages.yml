@@ -314,7 +314,7 @@ content:
     label: Показывать на сайте
     type: boolean
   - name: featured
-    label: Крупная карточка
+    label: Выделить проект
     type: boolean
   - name: image
     label: Игровой кадр (необязательно)
@@ -371,6 +371,9 @@ content:
     - name: genre
       label: Жанр
       type: string
+    - name: cardSummary
+      label: Короткое описание карточки
+      type: text
     - name: cardRole
       label: Роль в короткой карточке
       type: string
@@ -447,6 +450,9 @@ content:
     - name: genre
       label: Жанр
       type: string
+    - name: cardSummary
+      label: Короткое описание карточки
+      type: text
     - name: cardRole
       label: Роль в короткой карточке
       type: string

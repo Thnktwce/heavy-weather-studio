@@ -178,7 +178,7 @@
       const cardHeading = node('h3', '', project.name);
       cardHeading.id = `card-heading-${index}`;
       cardCopy.append(cardHeading);
-      cardCopy.append(node('p', 'project-card-description', copy.description || copy.subtitle || ''));
+      cardCopy.append(node('p', 'project-card-description', copy.cardSummary || copy.description || copy.subtitle || ''));
       const meta = node('div', 'project-card-meta');
       if (copy.cardRole) meta.append(node('span', '', copy.cardRole));
       if (copy.cardPlatform) meta.append(node('span', '', copy.cardPlatform));
