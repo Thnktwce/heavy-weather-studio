@@ -49,7 +49,6 @@ body{background:var(--ink)}
 .practice{background:var(--ivory)}
 .practice:lang(en) h2{font-size:clamp(40px,5vw,64px);white-space:nowrap}
 .practice:lang(en) h2 span{display:inline}
-.practice:lang(en) h2 span+span::before{content:" "}
 .practice .eyebrow,.method-list li>span{color:var(--ink);opacity:.7}
 .method-list,.method-list li{border-color:var(--muted)}
 .method-list p{color:var(--ink);opacity:.8}
