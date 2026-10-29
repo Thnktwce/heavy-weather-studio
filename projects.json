@@ -6,6 +6,7 @@
     "featured": true,
     "published": true,
     "image": "/media/HowHigh_PlayStore_feature_1024x500.png",
+    "imageFit": "cover",
     "videoUrl": "",
     "stores": [],
     "ru": {
@@ -23,8 +24,8 @@
           "value": "Геймдизайн, разработка, подготовка к выпуску"
         },
         {
-          "label": "Визуал",
-          "value": "Дима"
+          "label": "Art & Visual Direction",
+          "value": "CheCho"
         },
         {
           "label": "Платформа",
@@ -33,7 +34,7 @@
       ],
       "cases": [],
       "about": "How High — мобильная игра о непрерывном подъёме над городом. Герой прыгает автоматически, а игрок направляет его наклоном телефона или касаниями экрана. По мере набора высоты обычные облака уступают место более сложным сочетаниям: платформы двигаются, рассыпаются и создают опасные зоны с молниями. Короткие забеги строятся вокруг точности движения и восстановления после ошибок. Приземление в центр облака усиливает следующий прыжок, три точных попадания подряд запускают ракету, а пойманное у нижнего края экрана облако может спасти почти проигранную попытку.",
-      "contribution": "Я отвечал за геймдизайн, разработку и интеграцию игровых систем, управление, генерацию уровня, баланс сложности, интерфейсное поведение, эффекты, звуковую и тактильную обратную связь, рекламную монетизацию и подготовку Android-сборки к Google Play. Визуал нарисовал Дима. В разработке я использовал AI-инструменты, сохраняя за собой постановку задач, дизайнерские решения, настройку и проверку результата.",
+      "contribution": "Я отвечал за геймдизайн, разработку и интеграцию игровых систем, управление, генерацию уровня, баланс сложности, интерфейсное поведение, эффекты, звуковую и тактильную обратную связь, рекламную монетизацию и подготовку Android-сборки к Google Play. Художественный стиль и визуальную подачу создал CheCho (Art & Visual Direction). В разработке я использовал AI-инструменты, сохраняя за собой постановку задач, дизайнерские решения, настройку и проверку результата.",
       "designDecisions": [
         {
           "title": "Простое управление с возможностью совершенствоваться",
@@ -73,8 +74,8 @@
           "value": "Game design, development, release preparation"
         },
         {
-          "label": "Art",
-          "value": "Dima"
+          "label": "Art & Visual Direction",
+          "value": "CheCho"
         },
         {
           "label": "Platform",
@@ -83,7 +84,7 @@
       ],
       "cases": [],
       "about": "How High is a mobile game about climbing endlessly above a city. The character jumps automatically, while players steer by tilting the phone or touching the screen. As altitude increases, ordinary clouds give way to moving and crumbling platforms and hazardous areas with lightning. Short runs focus on precise movement and recovering from mistakes. Landing in the center of a cloud boosts the next jump; three precise landings in a row trigger a rocket. Catching a cloud near the bottom of the screen can save an almost-lost run.",
-      "contribution": "I handled game design, development and integration of the game systems, controls, level generation, difficulty balance, UI behavior, effects, audio and haptic feedback, ad monetization, and preparation of the Android build for Google Play. Dima created the art. I used AI tools during development while retaining responsibility for the briefs, design decisions, tuning, and validation of the results.",
+      "contribution": "I handled game design, development and integration of the game systems, controls, level generation, difficulty balance, UI behavior, effects, audio and haptic feedback, ad monetization, and preparation of the Android build for Google Play. CheCho created the art and visual direction. I used AI tools during development while retaining responsibility for the briefs, design decisions, tuning, and validation of the results.",
       "designDecisions": [
         {
           "title": "Simple controls with room to improve",
@@ -242,12 +243,20 @@
       "description": "Короткие забеги и решение на грани риска: держаться ближе к толпе ради результата или вовремя выйти. Проект исследует, как одно пространственное правило меняет поведение игрока.",
       "facts": [
         {
+          "label": "POLYUS",
+          "value": "Геймдизайн · игровые системы"
+        },
+        {
           "label": "Фокус",
           "value": "Риск, дистанция, обратная связь"
         },
         {
           "label": "Статус",
           "value": "Разработка"
+        },
+        {
+          "label": "Art & Visual Direction",
+          "value": "CheCho"
         }
       ],
       "cases": [],
@@ -261,12 +270,20 @@
       "description": "Short runs and a risky choice: stay close to the crowd for a better result, or leave in time. The project explores how one spatial rule changes player behavior.",
       "facts": [
         {
+          "label": "POLYUS",
+          "value": "Game design · game systems"
+        },
+        {
           "label": "Focus",
           "value": "Risk, distance, feedback"
         },
         {
           "label": "Status",
           "value": "Development"
+        },
+        {
+          "label": "Art & Visual Direction",
+          "value": "CheCho"
         }
       ],
       "cases": [],

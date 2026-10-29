@@ -319,6 +319,16 @@ content:
   - name: image
     label: Игровой кадр (необязательно)
     type: image
+  - name: imageFit
+    label: Вписать обложку в карточку
+    type: select
+    description: Для скриншотов выбирайте «Целиком». Обрезку используйте только для подготовленной обложки.
+    options:
+      values:
+      - name: contain
+        label: Целиком без обрезки
+      - name: cover
+        label: Заполнить кадр обложкой
   - name: icon
     label: Иконка игры (необязательно)
     type: image

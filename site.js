@@ -113,7 +113,6 @@
   function revealProject(slug, { scroll = false, focus = false } = {}) {
     const panels = [...projectPanels.querySelectorAll('.project')];
     const active = panels.find(panel => panel.id === slug);
-    projectExpanded.hidden = !active;
     panels.forEach(panel => { panel.hidden = panel !== active; });
     projectList.querySelectorAll('.project-card-link').forEach(link => {
       const selected = link.dataset.project === slug && Boolean(active);
@@ -121,10 +120,11 @@
       if (selected) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
-    if (active && scroll) requestAnimationFrame(() => {
-      projectExpanded.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (focus) active.querySelector('h3')?.focus({ preventScroll: true });
-    });
+    if (active) {
+      if (!projectExpanded.open) projectExpanded.showModal();
+      if (scroll) projectExpanded.scrollTop = 0;
+      if (focus) requestAnimationFrame(() => active.querySelector('h3')?.focus({ preventScroll: true }));
+    } else if (projectExpanded.open) projectExpanded.close();
   }
 
   function closeProject() {
@@ -135,9 +135,14 @@
     history.pushState(null, '', url);
     revealProject(null);
     link?.focus({ preventScroll: true });
-    projectList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) projectList.scrollIntoView();
+    else projectList.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   document.querySelectorAll('[data-close-project]').forEach(button => button.addEventListener('click', closeProject));
+  projectExpanded.addEventListener('cancel', event => { event.preventDefault(); closeProject(); });
+  projectExpanded.addEventListener('click', event => {
+    if (event.target === projectExpanded && event.clientX < projectExpanded.getBoundingClientRect().left) closeProject();
+  });
   const syncProjectHash = () => {
     let slug = '';
     try { slug = decodeURIComponent(location.hash.slice(1)); } catch (_) { /* Invalid hash. */ }
@@ -150,34 +155,38 @@
     if (!Array.isArray(projects)) return;
     const fragment = document.createDocumentFragment();
     const panels = document.createDocumentFragment();
-    projects.filter(project => project && project.published !== false && project[language] && project.name).forEach((project, index) => {
+    const visible = projects.filter(project => project && project.published !== false && project[language] && project.name);
+    const featured = visible.find(project => project.featured && safeImage(project.image)) || visible.find(project => safeImage(project.image));
+    const ordered = featured ? [featured, ...visible.filter(project => project !== featured)] : visible;
+    ordered.forEach((project, index) => {
       const copy = project[language];
       const slug = /^[a-z0-9-]+$/.test(project.slug || '') ? project.slug : `project-${index}`;
-      const card = node('article', `project-card${project.featured ? ' card-featured' : ''}`);
+      const isFeatured = project === featured;
+      const card = node('article', `project-card${isFeatured ? ' card-featured' : ' card-compact'}`);
       const link = node('a', 'project-card-link');
       link.href = `#${slug}`;
       link.dataset.project = slug;
       link.setAttribute('aria-controls', 'project-expanded');
       link.setAttribute('aria-expanded', 'false');
       const cardImage = safeImage(project.image);
-      const media = node('div', `project-card-media${cardImage ? '' : ' card-type-media'}`);
+      const media = node('div', `project-card-media${cardImage ? (project.imageFit === 'cover' ? ' is-cover' : '') : ' card-type-media'}`);
+      const cardHeading = node('h3', cardImage ? '' : 'card-art-mark', project.name);
+      cardHeading.id = `card-heading-${index}`;
       if (cardImage) {
         const image = node('img');
         image.src = cardImage;
         image.alt = '';
-        image.loading = index === 0 ? 'eager' : 'lazy';
+        image.decoding = 'async';
+        image.loading = 'lazy';
         media.append(image);
       } else {
-        media.append(node('span', 'card-art-mark', project.name));
-        media.setAttribute('aria-hidden', 'true');
+        media.append(cardHeading);
       }
       const cardCopy = node('div', 'project-card-copy');
       const topLine = node('div', 'project-card-topline');
       topLine.append(node('span', '', `${String(index + 1).padStart(2, '0')} / ${project.category || 'GAME'}`), node('span', '', copy.status || ''));
       cardCopy.append(topLine);
-      const cardHeading = node('h3', '', project.name);
-      cardHeading.id = `card-heading-${index}`;
-      cardCopy.append(cardHeading);
+      if (cardImage) cardCopy.append(cardHeading);
       cardCopy.append(node('p', 'project-card-description', copy.cardSummary || copy.description || copy.subtitle || ''));
       const meta = node('div', 'project-card-meta');
       if (copy.cardRole) meta.append(node('span', '', copy.cardRole));
@@ -196,7 +205,7 @@
       card.append(link);
       card.setAttribute('aria-labelledby', cardHeading.id);
       fragment.append(card);
-      const article = node('article', `project ${project.featured ? 'featured' : 'secondary'}`);
+      const article = node('article', `project ${isFeatured ? 'featured' : 'secondary'}`);
       article.id = slug;
       article.classList.add(`project-${slug}`);
       const headingId = `project-heading-${index}`;
@@ -235,7 +244,6 @@
         detail.append(facts);
       }
       body.append(detail);
-      article.append(body);
       const imageUrl = safeImage(project.image);
       if (imageUrl) {
         const figure = node('figure', 'project-media');
@@ -246,6 +254,7 @@
         figure.append(image);
         article.append(figure);
       }
+      article.append(body);
       article.append(renderVideo(project));
       if (Array.isArray(project.screenshots) && project.screenshots.length) {
         const section = node('section', 'project-gallery');
@@ -257,14 +266,18 @@
           const url = safeImage(shot?.image);
           if (!url) return;
           const figure = node('figure');
+          const original = node('a', 'project-gallery-original');
+          original.href = url;
+          original.target = '_blank';
+          original.rel = 'noopener noreferrer';
+          original.setAttribute('aria-label', language === 'ru' ? `Открыть оригинал: ${project.name}, кадр ${shotIndex + 1}` : `Open full image: ${project.name}, frame ${shotIndex + 1}`);
           const image = node('img');
           image.src = url;
           image.alt = (language === 'ru' ? shot.ruAlt : shot.enAlt) || `${project.name} — ${shotIndex + 1}`;
           image.loading = 'lazy';
           image.decoding = 'async';
-          image.width = 1080;
-          image.height = 1920;
-          figure.append(image);
+          original.append(image);
+          figure.append(original);
           track.append(figure);
         });
         if (track.childElementCount) {
@@ -438,12 +451,12 @@
       renderProjects(projects);
       renderCreatives(creatives);
     }
-    if (location.hash.length > 1) {
+    if (location.hash.length > 1 && !projectExpanded.open) {
       try {
         const targetId = decodeURIComponent(location.hash.slice(1));
         requestAnimationFrame(() => {
           const target = document.getElementById(targetId);
-          (target?.closest('#project-expanded') || target)?.scrollIntoView();
+          target?.scrollIntoView();
         });
       } catch (_) { /* Ignore malformed anchors. */ }
     }
