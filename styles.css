@@ -246,7 +246,7 @@ body[data-headline-scale="large"] .hero h1{font-size:clamp(54px,7.1vw,106px)}
 
 /* Enterprise Engine: an editorial presentation using the existing POLYUS palette. */
 .engine{background:var(--ink)}
-.engine .section-head h2{font-size:clamp(58px,8vw,112px);line-height:.87;letter-spacing:-.075em;overflow-wrap:anywhere}
+.engine .section-head h2{font-size:clamp(54px,7vw,100px);line-height:1.06;letter-spacing:-.025em;overflow-wrap:normal}
 .engine-summary{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,7vw,100px);padding:32px 0 55px;border-top:1px solid var(--line)}
 .engine-lead{font-size:clamp(31px,4vw,57px);font-weight:500;letter-spacing:-.055em;line-height:1.07;margin:0;max-width:740px}
 .engine-summary>div{max-width:530px}
@@ -296,6 +296,6 @@ body[data-headline-scale="large"] .hero h1{font-size:clamp(54px,7.1vw,106px)}
 .engine-asof{font:11px/1.6 var(--mono);color:var(--muted);margin:60px 0 0}
 @media(max-width:1050px){.site-header nav{gap:clamp(10px,1.4vw,20px)}.header-actions{gap:16px}.site-header nav a{font-size:11px}}
 @media(max-width:850px){.engine-summary,.engine-detail-heading,.engine-boundary,.engine-evidence,.engine-roadmap{grid-template-columns:1fr;gap:26px}.engine-summary{gap:20px}.engine-layer{grid-template-columns:50px minmax(0,.7fr) minmax(0,1.3fr)}.engine-flow{max-width:none}}
-@media(max-width:620px){.engine .section-head h2{font-size:clamp(52px,11vw,80px)}.engine-slide{min-height:390px}.engine-slide h3{font-size:clamp(38px,10vw,55px)}.engine-layer{grid-template-columns:40px 1fr;gap:8px 12px}.engine-layer>div{grid-column:2}.engine-evidence-item{grid-template-columns:1fr;gap:10px}.engine-flow{grid-template-columns:1fr}.engine-flow-step{min-height:0}.engine-asof{margin-top:40px}.site-header nav{justify-content:flex-start;gap:0 12px}}
+@media(max-width:620px){.engine .section-head h2{font-size:clamp(44px,10vw,72px)}.engine-slide{min-height:390px}.engine-slide h3{font-size:clamp(38px,10vw,55px)}.engine-layer{grid-template-columns:40px 1fr;gap:8px 12px}.engine-layer>div{grid-column:2}.engine-evidence-item{grid-template-columns:1fr;gap:10px}.engine-flow{grid-template-columns:1fr}.engine-flow-step{min-height:0}.engine-asof{margin-top:40px}.site-header nav{justify-content:flex-start;gap:0 12px}}
 @media(max-width:420px){.engine-controls span{margin-right:2px}.engine-deck-top{gap:10px}.engine-deck-top .eyebrow{font-size:10px}.site-header nav a{font-size:10px;min-height:38px}}
 @media(prefers-reduced-motion:reduce){.engine-controls button,.engine-dot{transition:none}}
