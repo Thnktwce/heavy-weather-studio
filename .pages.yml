@@ -31,6 +31,9 @@ content:
     - name: navProjects
       label: 'Меню: проекты'
       type: string
+    - name: navEngine
+      label: Меню / движок
+      type: string
     - name: navCreative
       label: 'Меню: креативы'
       type: string
@@ -169,6 +172,9 @@ content:
       type: string
     - name: navProjects
       label: 'Меню: проекты'
+      type: string
+    - name: navEngine
+      label: Меню / движок
       type: string
     - name: navCreative
       label: 'Меню: креативы'
@@ -657,3 +663,313 @@ content:
   - name: threadsUrl
     label: Ссылка Threads
     type: string
+- name: enterprise
+  label: Enterprise Engine · слайды и архитектура
+  type: file
+  path: enterprise.json
+  format: json
+  fields:
+  - name: ru
+    label: Русский
+    type: object
+    fields:
+    - name: intro
+      label: Вступление
+      type: text
+    - name: lead
+      label: Главный тезис
+      type: string
+    - name: summary
+      label: Общее описание
+      type: text
+    - name: status
+      label: Статус
+      type: string
+    - name: deckLabel
+      label: Надпись над слайдами
+      type: string
+    - name: previous
+      label: Предыдущий слайд / доступность
+      type: string
+    - name: next
+      label: Следующий слайд / доступность
+      type: string
+    - name: chooseSlide
+      label: Выбор слайда / доступность
+      type: string
+    - name: slides
+      label: Объяснительные слайды
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: eyebrow
+        label: Номер / тема
+        type: string
+      - name: title
+        label: Заголовок
+        type: string
+      - name: text
+        label: Описание
+        type: text
+      - name: note
+        label: Сноска
+        type: string
+    - name: architectureLabel
+      label: Надпись / архитектура
+      type: string
+    - name: architectureTitle
+      label: Заголовок / архитектура
+      type: string
+    - name: architectureIntro
+      label: Описание / архитектура
+      type: text
+    - name: layers
+      label: Слои архитектуры
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: number
+        label: Номер
+        type: string
+      - name: title
+        label: Название слоя
+        type: string
+      - name: tag
+        label: Краткая характеристика
+        type: string
+      - name: text
+        label: Описание
+        type: text
+    - name: flowLabel
+      label: Надпись / поток
+      type: string
+    - name: flowTitle
+      label: Заголовок / поток
+      type: string
+    - name: flow
+      label: Путь от игры к сборке
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: title
+        label: Этап
+        type: string
+      - name: text
+        label: Описание
+        type: text
+    - name: evidenceLabel
+      label: Надпись / проверка
+      type: string
+    - name: evidenceTitle
+      label: Заголовок / проверка
+      type: string
+    - name: evidenceIntro
+      label: Пояснение / проверка
+      type: text
+    - name: evidence
+      label: Что проверено
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: state
+        label: Уровень доказательства
+        type: string
+      - name: title
+        label: Название
+        type: string
+      - name: text
+        label: Что именно проверено
+        type: text
+    - name: roadmapLabel
+      label: Надпись / дальнейшие шаги
+      type: string
+    - name: roadmapTitle
+      label: Заголовок / дальнейшие шаги
+      type: string
+    - name: roadmapIntro
+      label: Пояснение / дальнейшие шаги
+      type: text
+    - name: roadmap
+      label: Этапы развития
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: state
+        label: Статус
+        type: string
+      - name: title
+        label: Этап
+        type: string
+      - name: text
+        label: Описание
+        type: text
+    - name: asof
+      label: Дата и оговорка
+      type: text
+  - name: en
+    label: English
+    type: object
+    fields:
+    - name: intro
+      label: Вступление
+      type: text
+    - name: lead
+      label: Главный тезис
+      type: string
+    - name: summary
+      label: Общее описание
+      type: text
+    - name: status
+      label: Статус
+      type: string
+    - name: deckLabel
+      label: Надпись над слайдами
+      type: string
+    - name: previous
+      label: Предыдущий слайд / доступность
+      type: string
+    - name: next
+      label: Следующий слайд / доступность
+      type: string
+    - name: chooseSlide
+      label: Выбор слайда / доступность
+      type: string
+    - name: slides
+      label: Объяснительные слайды
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: eyebrow
+        label: Номер / тема
+        type: string
+      - name: title
+        label: Заголовок
+        type: string
+      - name: text
+        label: Описание
+        type: text
+      - name: note
+        label: Сноска
+        type: string
+    - name: architectureLabel
+      label: Надпись / архитектура
+      type: string
+    - name: architectureTitle
+      label: Заголовок / архитектура
+      type: string
+    - name: architectureIntro
+      label: Описание / архитектура
+      type: text
+    - name: layers
+      label: Слои архитектуры
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: number
+        label: Номер
+        type: string
+      - name: title
+        label: Название слоя
+        type: string
+      - name: tag
+        label: Краткая характеристика
+        type: string
+      - name: text
+        label: Описание
+        type: text
+    - name: flowLabel
+      label: Надпись / поток
+      type: string
+    - name: flowTitle
+      label: Заголовок / поток
+      type: string
+    - name: flow
+      label: Путь от игры к сборке
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: title
+        label: Этап
+        type: string
+      - name: text
+        label: Описание
+        type: text
+    - name: evidenceLabel
+      label: Надпись / проверка
+      type: string
+    - name: evidenceTitle
+      label: Заголовок / проверка
+      type: string
+    - name: evidenceIntro
+      label: Пояснение / проверка
+      type: text
+    - name: evidence
+      label: Что проверено
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: state
+        label: Уровень доказательства
+        type: string
+      - name: title
+        label: Название
+        type: string
+      - name: text
+        label: Что именно проверено
+        type: text
+    - name: roadmapLabel
+      label: Надпись / дальнейшие шаги
+      type: string
+    - name: roadmapTitle
+      label: Заголовок / дальнейшие шаги
+      type: string
+    - name: roadmapIntro
+      label: Пояснение / дальнейшие шаги
+      type: text
+    - name: roadmap
+      label: Этапы развития
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: state
+        label: Статус
+        type: string
+      - name: title
+        label: Этап
+        type: string
+      - name: text
+        label: Описание
+        type: text
+    - name: asof
+      label: Дата и оговорка
+      type: text

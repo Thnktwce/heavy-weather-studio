@@ -1,0 +1,102 @@
+{
+  "ru": {
+    "intro": "Повторно используемая инфраструктура для разработки разных игр на Unity. Ниже — устройство системы, проверенные части и открытые задачи.",
+    "lead": "Одна основа. Разные игры.",
+    "summary": "Enterprise Engine — набор движковых пакетов и контрактов поверх Unity. Игры подключаются как отдельные проекты: общие системы не зависят от их жанра, а конкретные сцены и контент остаются у каждой игры.",
+    "status": "В разработке · внутреннее использование",
+    "deckLabel": "КОРОТКО О СИСТЕМЕ",
+    "previous": "Предыдущий слайд",
+    "next": "Следующий слайд",
+    "chooseSlide": "Выбрать слайд",
+    "slides": [
+      {"eyebrow": "01 / ЗАЧЕМ", "title": "Не начинать каждую игру с нуля", "text": "Сохранения, экономика, события, интерфейс и другие повторяющиеся системы живут в движке. Новая игра сосредотачивается на своей механике и контенте.", "note": "Unity остаётся технологической основой."},
+      {"eyebrow": "02 / ГРАНИЦА", "title": "Движок отдельно. Игра отдельно.", "text": "Независимые контракты лежат в пакетах Engine. Игровой код, сцены, префабы и настройки остаются в картридже. Зависимость направлена от игры к контрактам движка.", "note": "Engine / Packages → Game / Assets/Game"},
+      {"eyebrow": "03 / СБОРКА", "title": "Платформу выбирают на краю", "text": "Project Composition связывает игру с нужными адаптерами. Такой шов позволяет развивать WebGL и Windows без вендорского кода внутри игровой механики.", "note": "Game → Contracts → Composition → Platform"},
+      {"eyebrow": "04 / ДОКАЗАТЕЛЬСТВА", "title": "Архитектуру проверяют играми и тестами", "text": "Системы применялись в разных прототипах. Отдельная ветка с изолированным тестовым запуском прошла полный набор Unity EditMode и PlayMode; интеграция этой ветки ещё впереди.", "note": "325 EditMode + 260 PlayMode · 02.11.2026"}
+    ],
+    "architectureLabel": "АРХИТЕКТУРА / КОНТРАКТЫ",
+    "architectureTitle": "Как устроено",
+    "architectureIntro": "В проверенном архитектурном срезе зависимости пакетов идут внутрь: от адаптеров к application и domain. Игры используют контракты; bootstrap собирает реализацию. Это распределение ответственности, а не отдельный игровой движок вместо Unity.",
+    "layers": [
+      {"number": "00", "title": "Domain", "tag": "Без Unity", "text": "Модель данных и базовые правила. Внутреннее кольцо не ссылается на Unity или игровые сцены."},
+      {"number": "01", "title": "Application", "tag": "Контракты", "text": "Сервисы и порты для игровых систем: сохранения, прогрессия, экономика, события и телеметрия."},
+      {"number": "02", "title": "Infrastructure", "tag": "Адаптеры", "text": "Реализации для хранения данных, ввода, аудио, контента, VFX и аналитики; платформенные интеграции подключаются отдельно."},
+      {"number": "03", "title": "Bootstrap + game", "tag": "Композиция", "text": "Bootstrap собирает зависимости. Картридж хранит свою логику и authoring: сцены, префабы, визуал и настройки игрового контента."}
+    ],
+    "flowLabel": "ПУТЬ ОТ ИГРЫ К ПЛАТФОРМЕ",
+    "flowTitle": "Одна игра — разные сборки",
+    "flow": [
+      {"title": "Игровой картридж", "text": "Механики, контент и Unity authoring принадлежат конкретной игре."},
+      {"title": "Контракты Engine", "text": "Игра запрашивает сервис через интерфейс, не создавая конкретный SDK."},
+      {"title": "Project Composition", "text": "Точка сборки выбирает адаптеры для целевой платформы."},
+      {"title": "Целевой билд", "text": "Отдельные профили и проверки состава должны доказать корректную сборку."}
+    ],
+    "evidenceLabel": "ПРОВЕРЕНО / ГРАНИЦЫ",
+    "evidenceTitle": "На чём основаны выводы",
+    "evidenceIntro": "Каждый пункт привязан к своему срезу работы. Зелёные тесты в ветке не означают готовый публичный SDK или Steam-релиз.",
+    "evidence": [
+      {"state": "ПРОВЕРЕНО", "title": "Разделение пакетов", "text": "Аудит asmdef-графа на срезе Engine v0.3.0 не нашёл нарушений направления зависимостей. Engine-пакеты отделены от Assets/Game."},
+      {"state": "ПРОВЕРЕНО В ВЕТКЕ", "title": "Безопасный тестовый запуск", "text": "02.11.2026 изолированный harness и единый data-root прошли 325/325 EditMode, 260/260 PlayMode и 27/27 отрицательных контролей. Ветка ещё не объединена с dev."},
+      {"state": "ЧАСТИЧНО", "title": "Платформенная композиция", "text": "Для Blood Rave игровая сборка отделена от композиции CrazyGames/Steam в рабочей ветке; настоящий чистый Win64-билд и Steam runtime пока не подтверждены."}
+    ],
+    "roadmapLabel": "СЕЙЧАС / ДАЛЬШЕ",
+    "roadmapTitle": "Работа продолжается",
+    "roadmapIntro": "Состояние относится к разработке платформы, а не к готовности отдельной игры к публикации.",
+    "roadmap": [
+      {"state": "ТЕКУЩИЙ ЭТАП", "title": "Закрыть замечания и интегрировать тестовую изоляцию", "text": "Харнесс и data-root приняты в отдельной локальной ветке. Следующий gate — решение по замечаниям ревью и перенос в dev, затем в нужные игры."},
+      {"state": "СЛЕДУЮЩИЙ ШАГ", "title": "Доказать чистую сборку для платформ", "text": "Проверить исключение сторонних SDK из нецелевого билда, состав плеера и запуск Windows/WebGL. Техническая попытка Win64 ранее была отклонена аудитом."},
+      {"state": "ПОЗЖЕ", "title": "Довести Steam и опыт нового разработчика", "text": "Минимальный Steam-адаптер, геймпад, runtime QA и воспроизводимая поставка остаются отдельными этапами. Внешний onboarding пока отложен."}
+    ],
+    "asof": "Состояние по рабочим отчётам на 03.11.2026. Это не анонс публичного релиза или предложения лицензии."
+  },
+  "en": {
+    "intro": "Reusable infrastructure for building different games in Unity. Explore the system, what has been verified, and what remains open.",
+    "lead": "One foundation. Different games.",
+    "summary": "Enterprise Engine is a set of reusable packages and contracts built on Unity. Each game connects as a separate project: shared systems do not depend on its genre, while its scenes and content stay with the game.",
+    "status": "In development · internal use",
+    "deckLabel": "THE SYSTEM IN FOUR SLIDES",
+    "previous": "Previous slide",
+    "next": "Next slide",
+    "chooseSlide": "Show slide",
+    "slides": [
+      {"eyebrow": "01 / PURPOSE", "title": "Start the next game further ahead", "text": "Saves, economy, events, UI, and other recurring systems belong to the Engine. A new game can focus on its own mechanics and content.", "note": "Unity remains the underlying technology."},
+      {"eyebrow": "02 / BOUNDARY", "title": "Engine separate. Game separate.", "text": "Reusable contracts live in Engine packages. Game code, scenes, prefabs, and tuning stay in the cartridge. Dependencies run from the game toward Engine contracts.", "note": "Engine / Packages → Game / Assets/Game"},
+      {"eyebrow": "03 / COMPOSITION", "title": "Choose the platform at the edge", "text": "Project Composition connects a game to its selected adapters. This seam allows WebGL and Windows targets to evolve without vendor code in gameplay.", "note": "Game → Contracts → Composition → Platform"},
+      {"eyebrow": "04 / EVIDENCE", "title": "Prove the architecture in games and tests", "text": "The systems have been used in different prototypes. An isolated testing branch passed a full Unity EditMode and PlayMode suite; that branch still awaits integration.", "note": "325 EditMode + 260 PlayMode · 02 Nov 2026"}
+    ],
+    "architectureLabel": "ARCHITECTURE / CONTRACTS",
+    "architectureTitle": "How it works",
+    "architectureIntro": "In the audited architecture snapshot, package dependencies point inward: adapters depend on application and domain. Games use contracts; bootstrap assembles implementations. This is a division of responsibility on top of Unity.",
+    "layers": [
+      {"number": "00", "title": "Domain", "tag": "Unity free", "text": "Data model and core rules. The inner ring has no dependency on Unity or game scenes."},
+      {"number": "01", "title": "Application", "tag": "Contracts", "text": "Services and ports for saves, progression, economy, events, and telemetry."},
+      {"number": "02", "title": "Infrastructure", "tag": "Adapters", "text": "Implementations for storage, input, audio, content, VFX, and analytics; platform integrations connect separately."},
+      {"number": "03", "title": "Bootstrap + game", "tag": "Composition", "text": "Bootstrap wires dependencies. The cartridge owns its logic and authoring: scenes, prefabs, visuals, and game content settings."}
+    ],
+    "flowLabel": "FROM GAME TO PLATFORM",
+    "flowTitle": "One game, separate builds",
+    "flow": [
+      {"title": "Game cartridge", "text": "Mechanics, content, and Unity authoring belong to the individual game."},
+      {"title": "Engine contracts", "text": "The game asks for a service through an interface rather than constructing an SDK."},
+      {"title": "Project Composition", "text": "The composition root selects adapters for the target platform."},
+      {"title": "Target build", "text": "Separate profiles and content checks must prove that the build is correct."}
+    ],
+    "evidenceLabel": "VERIFIED / LIMITS",
+    "evidenceTitle": "What the evidence supports",
+    "evidenceIntro": "Each result belongs to a specific work snapshot. Green tests on a branch do not make a public SDK or Steam release.",
+    "evidence": [
+      {"state": "AUDITED", "title": "Package separation", "text": "The Engine v0.3.0 asmdef graph audit found no inward dependency violations. Engine packages are separate from Assets/Game."},
+      {"state": "TESTED ON BRANCH", "title": "Isolated test runs", "text": "On 02 Nov 2026, the isolated harness and unified data root passed 325/325 EditMode, 260/260 PlayMode, and 27/27 negative controls. The branch is not merged into dev."},
+      {"state": "PARTIAL", "title": "Platform composition", "text": "In a Blood Rave work branch, game code was separated from CrazyGames/Steam composition; a clean Win64 player and Steam runtime are still unproven."}
+    ],
+    "roadmapLabel": "NOW / NEXT",
+    "roadmapTitle": "Work in progress",
+    "roadmapIntro": "This is the platform's development status, not a release claim for any individual game.",
+    "roadmap": [
+      {"state": "CURRENT STAGE", "title": "Resolve review notes and integrate test isolation", "text": "The harness and data root were accepted on a separate local branch. The next gate is a decision on review notes and integration into dev, then relevant games."},
+      {"state": "NEXT", "title": "Prove clean platform builds", "text": "Verify that non-target SDKs are excluded, audit player contents, and run Windows/WebGL builds. An earlier technical Win64 attempt failed the content audit."},
+      {"state": "LATER", "title": "Complete Steam and developer handoff", "text": "The minimal Steam adapter, gamepad, runtime QA, and reproducible delivery remain separate stages. External developer onboarding is on hold."}
+    ],
+    "asof": "Status based on working reports as of 03 Nov 2026. This is not a public release or licensing announcement."
+  }
+}

@@ -11,15 +11,15 @@
   <meta property="og:url" content="https://polyus.dev/">
   <link rel="canonical" href="https://polyus.dev/">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="stylesheet" href="./styles.css?v=cms-14">
-  <script src="./site.js?v=cms-13" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=cms-15">
+  <script src="./site.js?v=cms-14" defer></script>
   <title>POLYUS — геймдизайн и разработка игр</title>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">К содержимому</a>
   <header class="site-header" id="top"><div class="shell header-inner">
     <a class="site-name" href="#top" aria-label="POLYUS — начало страницы"><img src="./favicon.svg" alt="" width="30" height="30">POLYUS</a>
-    <div class="header-actions"><nav aria-label="Основная навигация"><a href="#projects" data-i18n="navProjects">Проекты</a><a href="#creative" data-i18n="navCreative">Креативы</a><a href="#practice" data-i18n="navPractice">Подход</a><a href="#contact" data-i18n="navContact">Контакт</a></nav>
+    <div class="header-actions"><nav aria-label="Основная навигация"><a href="#projects" data-i18n="navProjects">Проекты</a><a href="#engine" data-i18n="navEngine">Enterprise Engine</a><a href="#creative" data-i18n="navCreative">Креативы</a><a href="#practice" data-i18n="navPractice">Подход</a><a href="#contact" data-i18n="navContact">Контакт</a></nav>
       <div class="language-switch" role="group" aria-label="Language / Язык"><button type="button" data-lang="ru" aria-pressed="true" disabled>RU</button><span aria-hidden="true">/</span><button type="button" data-lang="en" aria-pressed="false" disabled>EN</button></div></div>
   </div></header>
   <main id="main">
@@ -44,8 +44,18 @@
       </dialog>
       <p class="project-note" data-i18n="projectNote">У каждого проекта есть прямая ссылка: открытым кейсом удобно поделиться отдельно.</p>
     </div></section>
+    <section class="engine section-block" id="engine" aria-labelledby="engine-title"><div class="shell">
+      <div class="section-head"><p class="eyebrow">02 / SYSTEMS</p><h2 id="engine-title">Enterprise<br>Engine</h2><p id="engine-intro">Повторно используемая инфраструктура для разработки разных игр на Unity. Ниже — устройство системы, проверенные части и открытые задачи.</p></div>
+      <div class="engine-summary"><p class="engine-lead" id="engine-lead">Одна основа. Разные игры.</p><div><p id="engine-summary">Игры подключаются как отдельные проекты к общим контрактам и сервисам. Платформенные адаптеры и сборки развиваются отдельно от игровой логики.</p><span class="engine-status" id="engine-status">В разработке · внутреннее использование</span></div></div>
+      <div class="engine-deck" aria-label="Объяснение Enterprise Engine"><div class="engine-deck-top"><span class="eyebrow" id="engine-deck-label">КОРОТКО О СИСТЕМЕ</span><div class="engine-controls"><span id="engine-progress" aria-live="polite">01 / 04</span><button type="button" id="engine-prev" aria-label="Предыдущий слайд">←</button><button type="button" id="engine-next" aria-label="Следующий слайд">→</button></div></div><div id="engine-slide" class="engine-slide" aria-live="polite"></div><div id="engine-dots" class="engine-dots" role="group" aria-label="Выбор слайда"></div></div>
+      <div class="engine-detail"><div class="engine-detail-heading"><p class="eyebrow" id="engine-architecture-label">АРХИТЕКТУРА / КОНТРАКТЫ</p><h3 id="engine-architecture-title">Как устроено</h3><p id="engine-architecture-intro"></p></div><div class="engine-layers" id="engine-layers"></div></div>
+      <div class="engine-boundary"><div><p class="eyebrow" id="engine-flow-label">ПУТЬ ОТ ИГРЫ К ПЛАТФОРМЕ</p><h3 id="engine-flow-title">Одна игра — разные сборки</h3></div><div id="engine-flow" class="engine-flow"></div></div>
+      <div class="engine-evidence"><div><p class="eyebrow" id="engine-evidence-label">ПРОВЕРЕНО / ГРАНИЦЫ</p><h3 id="engine-evidence-title">На чём основаны выводы</h3><p id="engine-evidence-intro"></p></div><div id="engine-evidence-list" class="engine-evidence-list"></div></div>
+      <div class="engine-roadmap"><div><p class="eyebrow" id="engine-roadmap-label">СЕЙЧАС / ДАЛЬШЕ</p><h3 id="engine-roadmap-title">Работа продолжается</h3><p id="engine-roadmap-intro"></p></div><ol id="engine-roadmap-list"></ol></div>
+      <p class="engine-asof" id="engine-asof">Состояние по рабочим отчётам на 03.11.2026; не является анонсом публичного релиза.</p>
+    </div></section>
     <section class="creative section-block" id="creative" aria-labelledby="creative-title"><div class="shell">
-      <div class="section-head"><p class="eyebrow">02 / CREATIVE DEVELOPMENT</p><h2 id="creative-title"><span data-i18n="creativeTitleA">Creative</span><span data-i18n="creativeTitleB">Development</span></h2><p data-i18n="creativeIntro">Создаю рекламные игровые ролики: от идеи и сцены в Unity до монтажа и версий под разные форматы.</p></div>
+      <div class="section-head"><p class="eyebrow">03 / CREATIVE DEVELOPMENT</p><h2 id="creative-title"><span data-i18n="creativeTitleA">Creative</span><span data-i18n="creativeTitleB">Development</span></h2><p data-i18n="creativeIntro">Создаю рекламные игровые ролики: от идеи и сцены в Unity до монтажа и версий под разные форматы.</p></div>
       <div class="creative-overview">
         <p class="creative-lead" data-i18n="creativeLead">Игровое действие должно быть понятно за секунды. Я строю креатив вокруг того, что зритель увидит, поймёт и захочет попробовать.</p>
         <div class="creative-capabilities">
@@ -57,7 +67,7 @@
       <p id="creative-empty" class="creative-empty" data-i18n="creativeEmpty">Публичная подборка роликов появится здесь после согласования материалов.</p>
     </div></section>
     <section class="practice section-block" id="practice" aria-labelledby="practice-title"><div class="shell practice-grid">
-      <div><p class="eyebrow">03 / METHOD</p><h2 id="practice-title"><span data-i18n="practiceTitleA">Как я</span> <span data-i18n="practiceTitleB">работаю</span></h2></div>
+      <div><p class="eyebrow">04 / METHOD</p><h2 id="practice-title"><span data-i18n="practiceTitleA">Как я</span> <span data-i18n="practiceTitleB">работаю</span></h2></div>
       <div><p class="lead" data-i18n="practiceIntro">У игры есть идея. У игрока — своё понимание этой идеи. Между ними находится моя работа.</p>
         <ol class="method-list"><li><span>01</span><div><h3 data-i18n="methodOne">Формулирую правило</h3><p data-i18n="methodOneText">Что игрок делает, зачем он это делает и какой выбор делает игру интересной.</p></div></li>
           <li><span>02</span><div><h3 data-i18n="methodTwo">Собираю играбельное</h3><p data-i18n="methodTwoText">Прототип в Unity помогает увидеть слабые места механики и взаимодействия.</p></div></li>
@@ -65,7 +75,7 @@
       </div>
     </div></section>
     <section class="contact section-block" id="contact" aria-labelledby="contact-title"><div class="shell contact-grid">
-      <div><p class="eyebrow">04 / CONTACT</p><h2 id="contact-title"><span data-i18n="contactTitleA">Есть игра,</span><span data-i18n="contactTitleB">которую стоит</span><em data-i18n="contactTitleC">разобрать?</em></h2></div>
+      <div><p class="eyebrow">05 / CONTACT</p><h2 id="contact-title"><span data-i18n="contactTitleA">Есть игра,</span><span data-i18n="contactTitleB">которую стоит</span><em data-i18n="contactTitleC">разобрать?</em></h2></div>
       <div class="contact-detail"><p data-i18n="contactIntro">Открыт к разговору о геймдизайне, игровых прототипах и совместной работе. Публичные заметки и ход разработки — в моих каналах.</p>
         <a class="arrow-link" data-contact="github" href="https://github.com/Thnktwce" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         <a class="arrow-link" data-contact="threads" href="https://www.threads.net/@polyushw_" target="_blank" rel="noopener noreferrer">Threads / POLYUS <span aria-hidden="true">↗</span></a>

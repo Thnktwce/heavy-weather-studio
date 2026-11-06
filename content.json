@@ -44,7 +44,8 @@
     "footerNote": "Сделано с вниманием к деталям.",
     "caseStudyLabel": "ПОДРОБНЫЙ КЕЙС",
     "closeCase": "Закрыть кейс ↑",
-    "backToProjects": "Ко всем проектам ↑"
+    "backToProjects": "Ко всем проектам ↑",
+    "navEngine": "Движок"
   },
   "en": {
     "title": "POLYUS — game design and development",
@@ -91,6 +92,7 @@
     "footerNote": "Made with attention to detail.",
     "caseStudyLabel": "FULL CASE STUDY",
     "closeCase": "Close case study ↑",
-    "backToProjects": "Back to all projects ↑"
+    "backToProjects": "Back to all projects ↑",
+    "navEngine": "Engine"
   }
 }

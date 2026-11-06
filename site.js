@@ -6,6 +6,8 @@
   const projectPanels = document.querySelector('#project-panels');
   const creativeList = document.querySelector('#creative-list');
   const creativeEmpty = document.querySelector('#creative-empty');
+  const engineDeck = document.querySelector('.engine-deck');
+  let activeEngineSlide = 0;
   const requested = new URLSearchParams(location.search).get('lang');
   let saved;
   try { saved = localStorage.getItem('polyus-language'); } catch (_) { /* Optional storage. */ }
@@ -384,6 +386,88 @@
     creativeEmpty.hidden = creativeList.childElementCount > 0;
   }
 
+  function renderEngine(engine) {
+    const copy = engine?.[language];
+    if (!copy) return;
+    const fields = {
+      intro: 'engine-intro', lead: 'engine-lead', summary: 'engine-summary', status: 'engine-status',
+      deckLabel: 'engine-deck-label', architectureLabel: 'engine-architecture-label',
+      architectureTitle: 'engine-architecture-title', architectureIntro: 'engine-architecture-intro',
+      flowLabel: 'engine-flow-label', flowTitle: 'engine-flow-title',
+      evidenceLabel: 'engine-evidence-label', evidenceTitle: 'engine-evidence-title', evidenceIntro: 'engine-evidence-intro',
+      roadmapLabel: 'engine-roadmap-label', roadmapTitle: 'engine-roadmap-title', roadmapIntro: 'engine-roadmap-intro', asof: 'engine-asof'
+    };
+    Object.entries(fields).forEach(([key, id]) => {
+      if (typeof copy[key] === 'string') document.getElementById(id).textContent = copy[key];
+    });
+    const layers = document.getElementById('engine-layers');
+    layers.replaceChildren(...(copy.layers || []).map(layer => {
+      const row = node('article', 'engine-layer');
+      row.append(node('span', 'engine-layer-number', layer.number), node('h4', '', layer.title));
+      const detail = node('div');
+      detail.append(node('span', 'engine-layer-tag', layer.tag), node('p', '', layer.text));
+      row.append(detail);
+      return row;
+    }));
+    const flow = document.getElementById('engine-flow');
+    flow.replaceChildren(...(copy.flow || []).map((step, index) => {
+      const item = node('div', 'engine-flow-step');
+      item.append(node('span', 'eyebrow', String(index + 1).padStart(2, '0')), node('h4', '', step.title), node('p', '', step.text));
+      return item;
+    }));
+    const evidence = document.getElementById('engine-evidence-list');
+    evidence.replaceChildren(...(copy.evidence || []).map(item => {
+      const row = node('article', 'engine-evidence-item');
+      row.append(node('span', 'engine-proof-tag', item.state));
+      const detail = node('div');
+      detail.append(node('h4', '', item.title), node('p', '', item.text));
+      row.append(detail);
+      return row;
+    }));
+    const roadmap = document.getElementById('engine-roadmap-list');
+    roadmap.replaceChildren(...(copy.roadmap || []).map(item => {
+      const row = node('li');
+      row.append(node('span', 'engine-proof-tag', item.state), node('h4', '', item.title), node('p', '', item.text));
+      return row;
+    }));
+    const slides = Array.isArray(copy.slides) ? copy.slides : [];
+    const slide = document.getElementById('engine-slide');
+    const dots = document.getElementById('engine-dots');
+    const prev = document.getElementById('engine-prev');
+    const next = document.getElementById('engine-next');
+    prev.setAttribute('aria-label', copy.previous || 'Previous slide');
+    next.setAttribute('aria-label', copy.next || 'Next slide');
+    activeEngineSlide = Math.min(activeEngineSlide, Math.max(0, slides.length - 1));
+    const showSlide = index => {
+      if (!slides.length) return;
+      activeEngineSlide = (index + slides.length) % slides.length;
+      const item = slides[activeEngineSlide];
+      const inner = node('div', 'engine-slide-inner');
+      inner.append(node('p', 'eyebrow', item.eyebrow), node('h3', '', item.title), node('p', 'engine-slide-copy', item.text), node('p', 'engine-slide-note', item.note));
+      slide.replaceChildren(inner);
+      document.getElementById('engine-progress').textContent = `${String(activeEngineSlide + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+      [...dots.children].forEach((button, i) => {
+        button.setAttribute('aria-pressed', String(i === activeEngineSlide));
+        button.setAttribute('aria-label', `${copy.chooseSlide || 'Show slide'} ${i + 1}: ${slides[i].title}`);
+      });
+    };
+    dots.replaceChildren(...slides.map((_, index) => {
+      const button = node('button', 'engine-dot');
+      button.type = 'button';
+      button.addEventListener('click', () => showSlide(index));
+      return button;
+    }));
+    prev.onclick = () => showSlide(activeEngineSlide - 1);
+    next.onclick = () => showSlide(activeEngineSlide + 1);
+    engineDeck.onkeydown = event => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        showSlide(activeEngineSlide + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    };
+    showSlide(activeEngineSlide);
+  }
+
   function applyDesign(design) {
     if (!design || typeof design !== 'object') return;
     const colors = { background: '--ink', panel: '--panel', paper: '--ivory', muted: '--muted', accent: '--red' };
@@ -410,10 +494,11 @@
     }
   }
 
-  Promise.allSettled([load('content'), load('projects'), load('creatives'), load('design')]).then(([copyResult, projectsResult, creativesResult, designResult]) => {
+  Promise.allSettled([load('content'), load('projects'), load('creatives'), load('design'), load('enterprise')]).then(([copyResult, projectsResult, creativesResult, designResult, engineResult]) => {
     const content = copyResult.status === 'fulfilled' ? copyResult.value : null;
     const projects = projectsResult.status === 'fulfilled' ? projectsResult.value : null;
     const creatives = creativesResult.status === 'fulfilled' ? creativesResult.value : null;
+    const engine = engineResult.status === 'fulfilled' ? engineResult.value : null;
     if (designResult.status === 'fulfilled') applyDesign(designResult.value);
     function setLanguage(lang, updateUrl = false) {
       if (!content?.[lang]) return;
@@ -432,6 +517,7 @@
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
       renderProjects(projects);
       renderCreatives(creatives);
+      renderEngine(engine);
       try { localStorage.setItem('polyus-language', lang); } catch (_) { /* Language still works. */ }
       if (updateUrl) {
         const url = new URL(location.href);
@@ -450,6 +536,7 @@
       language = 'ru';
       renderProjects(projects);
       renderCreatives(creatives);
+      renderEngine(engine);
     }
     if (location.hash.length > 1 && !projectExpanded.open) {
       try {
